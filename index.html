@@ -1,143 +1,52 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Happy Birthday ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday · 袁雨婷 ❤️</title>
 
-<style>
-body{
-margin:0;
-overflow:hidden;
-background:#000;
-font-family:"微软雅黑";
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-canvas{
-position:fixed;
-left:0;
-top:0;
-}
-
-.box{
-position:relative;
-z-index:2;
-text-align:center;
-}
-
-h1{
-font-size:48px;
-color:#ff5c8d;
-}
-
-#text{
-font-size:26px;
-width:80%;
-margin:auto;
-line-height:50px;
-min-height:180px;
-}
-
-button{
-padding:15px 40px;
-font-size:22px;
-border:none;
-border-radius:50px;
-background:#ff4d6d;
-color:white;
-cursor:pointer;
-margin-top:30px;
-}
-
-button:hover{
-transform:scale(1.08);
-}
-</style>
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+<canvas id="stars"></canvas>
 
-<div class="box">
+<div class="overlay"></div>
 
-<h1>🎂 Happy Birthday ❤️</h1>
+<div class="container">
 
-<div id="text"></div>
+    <div class="glass">
 
-<button onclick="gift()">🎁 点击领取礼物</button>
+        <div class="heart">❤️</div>
+
+        <h1>
+            Happy Birthday
+        </h1>
+
+        <h2>
+            袁雨婷
+        </h2>
+
+        <p id="typing"></p>
+
+        <button id="startBtn">
+            开启今天的故事 →
+        </button>
+
+    </div>
 
 </div>
 
-<script>
+<audio id="bgm" loop>
+    <source src="assets/music/happy-birthday.mp3" type="audio/mpeg">
+</audio>
 
-let str="宝贝，生日快乐❤️\n\n遇见你，是我这一生最大的幸运。\n愿你的每一天都被幸福包围。\n未来的生日，我都想陪你一起度过。\n\n我爱你 ❤️";
-
-let i=0;
-
-function type(){
-if(i<str.length){
-document.getElementById("text").innerHTML+=str.charAt(i).replace("\n","<br>");
-i++;
-setTimeout(type,80);
-}
-}
-
-type();
-
-function gift(){
-alert("🎁 礼物就是：以后每一个生日，都有我陪你。❤️");
-}
-
-// 星空
-const canvas=document.getElementById("bg");
-const c=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let stars=[];
-
-for(let i=0;i<250;i++){
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2
-});
-}
-
-function draw(){
-
-c.fillStyle="black";
-c.fillRect(0,0,canvas.width,canvas.height);
-
-c.fillStyle="white";
-
-stars.forEach(s=>{
-c.beginPath();
-c.arc(s.x,s.y,s.r,0,Math.PI*2);
-c.fill();
-
-s.y+=0.2;
-
-if(s.y>canvas.height){
-s.y=0;
-}
-});
-
-requestAnimationFrame(draw);
-
-}
-
-draw();
-
-</script>
+<script src="js/main.js"></script>
 
 </body>
 </html>
