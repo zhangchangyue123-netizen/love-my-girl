@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday · 袁雨婷 ❤️</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>给袁雨婷的生日祝福</title>
 
+    <!-- 首页CSS -->
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-<canvas id="stars"></canvas>
-
-<div class="overlay"></div>
-
-<div class="container">
-
-    <div class="glass">
-
-        <div class="heart">❤️</div>
+    <!-- 首页内容 -->
+    <div class="container">
 
         <h1>
-            Happy Birthday
+            亲爱的袁雨婷
         </h1>
 
-        <h2>
-            袁雨婷
-        </h2>
+        <p class="subtitle">
+            愿你的每一天都像今天一样闪闪发光
+        </p>
 
-        <p id="typing"></p>
 
-        <button id="startBtn">
-            开启今天的故事 →
-        </button>
+        <!-- 跳转生日页面按钮 -->
+        <a href="birthday.html" class="start-btn">
+            <button>
+                打开我的祝福 ❤️
+            </button>
+        </a>
+
 
     </div>
 
-</div>
 
-<audio id="bgm" loop>
-    <source src="assets/music/happy-birthday.mp3" type="audio/mpeg">
-</audio>
+    <!-- 背景音乐 -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="music/happy-birthday.mp3" type="audio/mpeg">
+    </audio>
 
-<script src="js/main.js"></script>
+
+    <!-- 首页JS -->
+    <script src="js/main.js"></script>
+
 
 </body>
+
 </html>
