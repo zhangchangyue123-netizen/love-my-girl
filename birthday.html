@@ -3,304 +3,168 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>Happy Birthday · 宝宝 ❤️</title>
+    <title>Happy Birthday ❤️</title>
 
-
-<link rel="stylesheet" href="css/birthday.css">
-
+    <link rel="stylesheet" href="css/birthday.css">
 
 </head>
 
-
 <body>
 
+<!-- =========================
+黑暗蜡烛开场（第一层）
+========================= -->
+
+<div id="intro" class="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-text">
+
+            轻触屏幕
+
+        </div>
+
+        <div class="single-candle">
+
+            <div class="flame"></div>
+
+            <div class="candle"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- 星空 -->
 
 <canvas id="birthdayStars"></canvas>
 
+<!-- 飘花 -->
 
+<div id="petals"></div>
+
+<!-- =========================
+生日主体
+========================= -->
 
 <div class="birthday-container">
 
+    <!-- 日期 -->
 
+    <div class="birthday-date">
 
-<div class="love-date">
-8.20
-</div>
+        2026 · 08 · 20
 
+    </div>
 
+    <!-- 标题 -->
 
+    <h1 class="birthday-title">
 
-<h1 class="title">
-Happy Birthday
-</h1>
+        Happy Birthday
 
+    </h1>
 
+    <!-- 名字 -->
 
-<div class="sub-title">
-To My Love ❤️
-</div>
+    <h2 class="birthday-name">
 
+        宝宝 ❤️
 
+    </h2>
 
-<h2 class="name">
-宝宝
-</h2>
+    <!-- 蛋糕 -->
 
+    <div class="cake-section">
 
+        <div class="cake-light"></div>
 
+        <img
+            src="images/cake.png"
+            class="cake"
+            alt="Birthday Cake">
 
+    </div>
 
-<!-- 粉色草莓千层蛋糕 -->
+    <!-- 毛玻璃祝福 -->
 
-<div class="cake-area">
+    <div class="wish-card">
 
+        <p id="wish">
 
-<svg class="pink-cake"
-viewBox="0 0 400 320">
+            宝宝，生日快乐 ❤️
 
+            <br><br>
 
-<!-- 阴影 -->
+            今天是属于你的特别日子。
 
-<ellipse
-cx="200"
-cy="280"
-rx="120"
-ry="25"
-class="cake-shadow"/>
+            <br>
 
+            希望你的笑容永远像今天一样灿烂。
 
+            <br><br>
 
-<!-- 蛋糕主体 -->
+            遇见你，
 
-<path
-d="
-M80 190
-Q200 240 320 190
-L300 255
-Q200 290 100 255
-Z"
-class="pink-body"/>
+            是我最幸运的一件事。
 
+            <br><br>
 
+            ❤️
 
+        </p>
 
+    </div>
 
-<!-- 千层奶油 -->
+    <!-- 按钮 -->
 
-<path
-d="
-M95 180
-Q200 215 305 180"
-class="cream-line"/>
+    <div class="button-group">
 
+        <button id="wishBtn">
 
-<path
-d="
-M100 150
-Q200 190 300 150"
-class="cream-line"/>
+            🎁 收下生日惊喜
 
+        </button>
 
-<path
-d="
-M105 120
-Q200 165 295 120"
-class="cream-line"/>
+        <button id="nextBtn">
 
+            📷 进入我们的回忆
 
+        </button>
 
-
-
-<!-- 顶部奶油 -->
-
-<ellipse
-cx="200"
-cy="110"
-rx="105"
-ry="35"
-class="pink-top"/>
-
-
-
-
-
-<!-- 奶油纹路 -->
-
-<path
-d="
-M110 110
-Q140 140 170 110
-Q200 140 230 110
-Q260 140 290 110"
-class="cream-wave"/>
-
-
-
-
-
-
-<!-- 草莓 -->
-
-<circle
-cx="140"
-cy="75"
-r="22"
-class="berry"/>
-
-
-<circle
-cx="200"
-cy="65"
-r="25"
-class="berry"/>
-
-
-<circle
-cx="260"
-cy="75"
-r="22"
-class="berry"/>
-
-
-
-
-
-<!-- 珍珠装饰 -->
-
-
-<circle
-cx="130"
-cy="130"
-r="5"
-class="pearl"/>
-
-
-<circle
-cx="160"
-cy="145"
-r="5"
-class="pearl"/>
-
-
-<circle
-cx="240"
-cy="145"
-r="5"
-class="pearl"/>
-
-
-<circle
-cx="270"
-cy="130"
-r="5"
-class="pearl"/>
-
-
-
-
-
-<!-- 蜡烛 -->
-
-
-<rect
-x="195"
-y="25"
-width="10"
-height="45"
-rx="5"
-class="gold-candle"/>
-
-
-
-
-
-<!-- 火焰 -->
-
-
-<path
-d="
-M200 15
-C180 40
-205 55
-215 30
-C215 20
-205 10
-200 15"
-class="pink-fire"/>
-
-
-
-</svg>
-
-
-
-<div class="pink-glow"></div>
-
+    </div>
 
 </div>
 
+<!-- 音乐按钮 -->
 
+<div id="musicBtn" class="music-btn">
 
-
-
-
-<!-- 祝福 -->
-
-<div class="love-card">
-
-<p id="wish"></p>
+    🎵
 
 </div>
 
+<!-- 背景音乐 -->
 
+<audio
+    id="birthdayMusic"
+    loop>
 
-
-
-<button id="wishBtn">
-
-🕯️ 点亮生日愿望
-
-</button>
-
-
-
-
-<button id="nextBtn">
-
-进入我们的回忆 ❤️
-
-</button>
-
-
-
-
-</div>
-
-
-
-
-
-<audio id="birthdayMusic" loop>
-
-
-<source src="music/happy-birthday.mp3"
-type="audio/mpeg">
-
+    <source src="music/happy-birthday.mp3" type="audio/mpeg">
 
 </audio>
 
-
-
-
+<!-- JS -->
 
 <script src="js/birthday.js"></script>
 
-
 </body>
-
 
 </html>
