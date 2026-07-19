@@ -1,0 +1,729 @@
+/*
+=================================
+
+ Happy Birthday · 袁雨婷 ❤️
+
+ birthday.css
+
+ 第二幕生日页面样式
+
+=================================
+*/
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    font-family:
+    "Microsoft YaHei",
+    sans-serif;
+
+    color:white;
+
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        #263b73,
+        #090d20 55%,
+        #03040c
+    );
+
+}
+
+
+
+/* 星空 */
+
+#birthdayStars{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    z-index:0;
+
+}
+
+
+
+/* 主容器 */
+
+
+.birthday-container{
+
+
+    position:relative;
+
+    z-index:2;
+
+
+    width:100%;
+
+    height:100%;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+    padding:20px;
+
+
+}
+
+
+
+
+
+/* 日期 */
+
+
+.date{
+
+
+    font-size:70px;
+
+    font-weight:700;
+
+
+    letter-spacing:8px;
+
+
+    color:#fff;
+
+
+    text-shadow:
+
+    0 0 20px rgba(255,255,255,.8);
+
+
+    animation:
+
+    dateShow 2s ease;
+
+
+}
+
+
+
+
+
+/* Happy Birthday */
+
+
+.title{
+
+
+    margin-top:10px;
+
+
+    font-size:45px;
+
+
+    letter-spacing:3px;
+
+
+    font-weight:700;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #fff,
+        #ffd6e7,
+        #ff6fa5
+    );
+
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+
+
+    animation:
+
+    titleShow 2s ease .5s backwards;
+
+
+}
+
+
+
+
+
+/* 名字 */
+
+
+.name{
+
+
+    margin-top:15px;
+
+
+    font-size:36px;
+
+
+    letter-spacing:6px;
+
+
+    color:#ff9fc4;
+
+
+    text-shadow:
+
+    0 0 15px rgba(255,100,160,.8);
+
+
+
+    animation:
+
+    nameShow 2s ease 1s backwards;
+
+
+}
+
+
+
+
+
+
+/* =======================
+   蛋糕区域
+======================= */
+
+
+.cake-area{
+
+
+    margin-top:35px;
+
+
+    position:relative;
+
+
+    width:220px;
+
+
+    height:180px;
+
+
+}
+
+
+
+
+
+
+/* 火焰 */
+
+
+.flame{
+
+
+    position:absolute;
+
+
+    top:-35px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    font-size:45px;
+
+
+    animation:
+
+
+    flameMove .8s infinite alternate;
+
+
+}
+
+
+
+
+/* 蛋糕主体 */
+
+
+.cake{
+
+
+    position:absolute;
+
+
+    bottom:0;
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+.cake-top{
+
+
+    width:120px;
+
+    height:35px;
+
+
+    background:
+
+    linear-gradient(
+    #ffd1dc,
+    #ff8fb3
+    );
+
+
+    border-radius:50%;
+
+
+    margin:auto;
+
+
+}
+
+
+
+
+
+.cake-body{
+
+
+    width:150px;
+
+
+    height:55px;
+
+
+    margin:auto;
+
+
+    background:
+
+    linear-gradient(
+    #ff9fc4,
+    #ff4f8b
+    );
+
+
+    border-radius:
+
+    10px 10px 20px 20px;
+
+
+    box-shadow:
+
+    0 10px 30px rgba(255,80,140,.5);
+
+
+}
+
+
+
+
+
+.cake-bottom{
+
+
+    width:180px;
+
+
+    height:45px;
+
+
+    margin:auto;
+
+
+    background:
+
+    linear-gradient(
+    #ffe0ea,
+    #ff7da8
+    );
+
+
+    border-radius:
+
+    10px 10px 30px 30px;
+
+
+}
+
+
+
+
+
+
+
+/* 祝福区域 */
+
+
+.message{
+
+
+    margin-top:25px;
+
+
+    width:90%;
+
+    max-width:600px;
+
+
+    min-height:90px;
+
+
+    padding:20px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.3);
+
+
+}
+
+
+
+
+#wish{
+
+
+    font-size:18px;
+
+
+    line-height:35px;
+
+
+    color:#fff;
+
+
+}
+
+
+
+
+
+/* 按钮 */
+
+
+button{
+
+
+    margin-top:20px;
+
+
+    padding:
+
+    15px 35px;
+
+
+    border:none;
+
+
+    border-radius:50px;
+
+
+    font-size:17px;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    background:
+
+
+    linear-gradient(
+    135deg,
+    #ff5e9c,
+    #8b5cf6
+    );
+
+
+    box-shadow:
+
+    0 10px 30px rgba(255,80,150,.4);
+
+
+
+    transition:.3s;
+
+
+}
+
+
+
+button:hover{
+
+
+    transform:
+
+    scale(1.08);
+
+
+}
+
+
+
+
+
+#nextBtn{
+
+
+    display:none;
+
+}
+
+
+
+
+
+
+
+/* ======================
+   动画
+====================== */
+
+
+@keyframes flameMove{
+
+
+    from{
+
+        transform:
+
+        translateX(-50%)
+
+        rotate(-8deg)
+
+        scale(1);
+
+    }
+
+
+    to{
+
+        transform:
+
+        translateX(-50%)
+
+        rotate(8deg)
+
+        scale(1.15);
+
+    }
+
+}
+
+
+
+
+@keyframes dateShow{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        translateY(-50px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0);
+
+    }
+
+}
+
+
+
+
+
+@keyframes titleShow{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+        scale(.7);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        scale(1);
+
+    }
+
+}
+
+
+
+
+
+@keyframes nameShow{
+
+
+    from{
+
+        opacity:0;
+
+        letter-spacing:20px;
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        letter-spacing:6px;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+/* 手机适配 */
+
+
+@media(max-width:768px){
+
+
+
+.date{
+
+    font-size:55px;
+
+}
+
+
+
+.title{
+
+    font-size:32px;
+
+}
+
+
+
+.name{
+
+    font-size:28px;
+
+}
+
+
+
+.cake-area{
+
+    transform:scale(.85);
+
+}
+
+
+
+.message{
+
+    padding:15px;
+
+}
+
+
+
+#wish{
+
+    font-size:16px;
+
+}
+
+
+button{
+
+    width:85%;
+
+}
+
+
+
+}
