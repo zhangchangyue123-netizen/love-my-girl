@@ -1,3 +1,11 @@
+/* =================================
+   袁雨婷生日祝福网页
+   粉色恋爱主题 birthday.css
+================================= */
+
+
+/* 全局 */
+
 *{
 
 margin:0;
@@ -13,33 +21,46 @@ box-sizing:border-box;
 body{
 
 
-min-height:100vh;
+width:100%;
+
+height:100vh;
 
 
 overflow:hidden;
+
+
+
+font-family:
+
+"Microsoft YaHei",
+"PingFang SC",
+sans-serif;
+
+
+
+color:white;
+
 
 
 background:
 
 radial-gradient(
 circle at top,
-#40245f,
-#12091f
+#ffd1e8 0%,
+#b86aa8 35%,
+#3a1648 75%,
+#120816 100%
 );
 
-
-font-family:
-
-"Microsoft YaHei",
-sans-serif;
-
-
-color:white;
 
 
 }
 
 
+
+/* ===============================
+   星空背景
+================================ */
 
 
 #birthdayStars{
@@ -47,9 +68,11 @@ color:white;
 
 position:fixed;
 
+
 left:0;
 
 top:0;
+
 
 width:100%;
 
@@ -65,6 +88,9 @@ z-index:-1;
 
 
 
+/* ===============================
+   主容器
+================================ */
 
 
 .birthday-container{
@@ -79,16 +105,19 @@ display:flex;
 flex-direction:column;
 
 
+align-items:center;
+
+
 justify-content:center;
 
-
-align-items:center;
 
 
 text-align:center;
 
 
+
 padding:20px;
+
 
 
 }
@@ -96,23 +125,39 @@ padding:20px;
 
 
 
+
+
+/* 日期 */
 
 
 .love-date{
 
 
-font-size:18px;
+font-size:20px;
 
 
-letter-spacing:8px;
+letter-spacing:10px;
 
 
-color:#ffd2e8;
+
+color:#ffe5f1;
+
+
+
+text-shadow:
+
+0 0 15px
+#ff9ec7;
+
 
 
 }
 
 
+
+
+
+/* 主标题 */
 
 
 .title{
@@ -121,29 +166,59 @@ color:#ffd2e8;
 margin-top:15px;
 
 
+
 font-size:48px;
 
 
+
 font-family:
-"Times New Roman";
+
+"Times New Roman",
+serif;
+
 
 
 letter-spacing:3px;
 
 
+
+
 background:
 
 linear-gradient(
+
 90deg,
-#fff,
-#ff9fc8
+
+#ffffff,
+
+#ffb6d9,
+
+#ffffff
+
 );
+
 
 
 -webkit-background-clip:text;
 
 
 color:transparent;
+
+
+
+
+text-shadow:
+
+
+0 0 30px
+rgba(255,150,200,.8);
+
+
+
+animation:
+
+titleShow 1.5s;
+
 
 
 }
@@ -161,11 +236,11 @@ margin-top:10px;
 font-size:18px;
 
 
-color:#ffddea;
+color:#ffe3ef;
+
 
 
 }
-
 
 
 
@@ -179,9 +254,25 @@ margin-top:15px;
 font-size:38px;
 
 
+
+font-weight:bold;
+
+
+
+color:#fff;
+
+
+
 text-shadow:
 
-0 0 25px #ff79b7;
+
+0 0 20px
+#ff79b8,
+
+
+0 0 50px
+#ff79b8;
+
 
 
 }
@@ -190,43 +281,151 @@ text-shadow:
 
 
 
-
-
-
-/* =====蛋糕===== */
+/* ===============================
+   粉色草莓千层蛋糕
+================================ */
 
 
 .cake-area{
 
 
-margin:20px;
-
-
 position:relative;
+
+
+
+margin:20px 0;
+
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
 
 
 }
 
 
 
-.mille-cake{
 
 
-width:300px;
+
+.pink-cake{
+
+
+width:310px;
+
+
+
+filter:
+
+
+drop-shadow(
+
+0 25px 35px
+
+rgba(255,80,160,.6)
+
+);
+
+
+
+animation:
+
+
+cakeFloat 4s infinite ease-in-out;
+
+
+
+}
+
+
+
+
+
+/* 蛋糕阴影 */
+
+
+.cake-shadow{
+
+
+fill:
+
+rgba(0,0,0,.3);
+
+
+
+}
+
+
+
+
+
+/* 粉色蛋糕主体 */
+
+
+.pink-body{
+
+
+fill:#ff9fc9;
+
+
+stroke:
+
+#ffd1e5;
+
+
+stroke-width:3;
+
+
+
+}
+
+
+
+
+
+/* 奶油夹层 */
+
+
+.cream-line{
+
+
+fill:none;
+
+
+
+stroke:
+
+#fff7fb;
+
+
+
+stroke-width:14;
+
+
+
+stroke-linecap:
+
+round;
+
 
 
 filter:
 
 drop-shadow(
-0 20px 25px
-rgba(255,120,160,.5)
+
+0 3px 5px
+
+rgba(255,255,255,.5)
+
 );
 
 
-animation:
-
-cakeFloat 4s infinite ease-in-out;
-
 
 }
 
@@ -234,11 +433,29 @@ cakeFloat 4s infinite ease-in-out;
 
 
 
-.cake-shadow{
+
+
+/* 顶层粉色奶油 */
+
+
+.pink-top{
+
 
 fill:
 
-rgba(0,0,0,.25);
+#ffd4e6;
+
+
+
+stroke:
+
+white;
+
+
+
+stroke-width:3;
+
+
 
 }
 
@@ -246,9 +463,28 @@ rgba(0,0,0,.25);
 
 
 
-.cake-bottom{
 
-fill:#e9b07c;
+/* 奶油波纹 */
+
+
+.cream-wave{
+
+
+fill:none;
+
+
+
+stroke:white;
+
+
+
+stroke-width:10;
+
+
+
+stroke-linecap:round;
+
+
 
 }
 
@@ -256,9 +492,70 @@ fill:#e9b07c;
 
 
 
-.cream-layer{
+/* 草莓 */
 
-fill:#fff4ed;
+
+.berry{
+
+
+fill:
+
+#ff4778;
+
+
+
+stroke:
+
+#ffc1d3;
+
+
+
+stroke-width:3;
+
+
+
+filter:
+
+
+drop-shadow(
+
+0 5px 8px
+
+rgba(255,50,100,.6)
+
+);
+
+
+
+}
+
+
+
+
+/* 珍珠 */
+
+
+.pearl{
+
+
+fill:
+
+white;
+
+
+
+filter:
+
+
+drop-shadow(
+
+0 0 8px
+
+white
+
+);
+
+
 
 }
 
@@ -266,54 +563,64 @@ fill:#fff4ed;
 
 
 
-.cream-layer.pink{
+/* 金色蜡烛 */
 
-fill:#ffd3df;
+
+.gold-candle{
+
+
+fill:
+
+#ffe38a;
+
+
+
+filter:
+
+
+drop-shadow(
+
+0 0 10px
+
+#ffe38a
+
+);
+
+
 
 }
 
 
 
 
-.cake-top{
 
-fill:#fff8fa;
-
-}
+/* 粉色火焰 */
 
 
+.pink-fire{
 
 
+fill:
 
-.strawberry{
-
-fill:#ff5477;
-
-}
+#ff8fab;
 
 
 
-.leaf{
-
-fill:#55aa55;
-
-}
+filter:
 
 
+drop-shadow(
 
-.candle{
+0 0 15px
 
-fill:#ffd76a;
+#ff6fa8
 
-}
+);
 
 
 
+transform-origin:center;
 
-.fire{
-
-
-fill:#ff9b3d;
 
 
 animation:
@@ -321,6 +628,7 @@ animation:
 fire 0.8s infinite alternate;
 
 
+
 }
 
 
@@ -328,78 +636,43 @@ fire 0.8s infinite alternate;
 
 
 
-.cake-glow{
+/* 蛋糕粉色光晕 */
+
+
+.pink-glow{
 
 
 position:absolute;
 
 
-width:260px;
 
-height:100px;
+width:280px;
 
 
-bottom:0;
+height:120px;
+
+
+
+bottom:-20px;
+
+
 
 
 background:
 
-rgba(255,130,180,.4);
+rgba(255,100,180,.5);
 
 
 
 filter:
 
-blur(40px);
+blur(50px);
 
 
 
 z-index:-1;
 
 
-}
-
-
-
-
-
-@keyframes cakeFloat{
-
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-
-50%{
-
-transform:translateY(-15px);
-
-}
-
-
-}
-
-
-
-@keyframes fire{
-
-
-from{
-
-transform:scale(1);
-
-}
-
-
-to{
-
-transform:scale(1.2);
-
-}
-
 
 }
 
@@ -410,7 +683,9 @@ transform:scale(1.2);
 
 
 
-/* =====祝福卡片===== */
+/* ===============================
+   祝福玻璃卡片
+================================ */
 
 
 .love-card{
@@ -419,40 +694,52 @@ transform:scale(1.2);
 width:330px;
 
 
+
 max-width:90%;
+
 
 
 padding:25px;
 
 
-border-radius:25px;
+
+border-radius:30px;
+
 
 
 background:
 
-rgba(255,255,255,.12);
 
+rgba(255,255,255,.15);
 
-backdrop-filter:
-
-blur(12px);
 
 
 border:
 
+
 1px solid
+
 rgba(255,255,255,.3);
+
+
+
+backdrop-filter:
+
+blur(15px);
 
 
 
 box-shadow:
 
-0 0 30px
-rgba(255,120,170,.3);
+
+0 10px 40px
+
+rgba(255,120,180,.35);
 
 
 
 line-height:2;
+
 
 
 font-size:16px;
@@ -464,34 +751,59 @@ font-size:16px;
 
 
 
+#wish{
 
 
+animation:
+
+wishShow 1s;
+
+
+
+}
+
+
+
+
+
+
+/* ===============================
+   按钮
+================================ */
 
 
 button{
 
 
-margin-top:18px;
+margin-top:15px;
+
 
 
 padding:
 
-14px 35px;
+14px 38px;
 
 
 
 border:none;
 
 
-border-radius:40px;
+
+border-radius:50px;
+
 
 
 background:
 
+
 linear-gradient(
+
 135deg,
-#ff7eb3,
-#ff758c
+
+#ff9bc8,
+
+#ff5f91
+
 );
 
 
@@ -499,23 +811,25 @@ linear-gradient(
 color:white;
 
 
+
 font-size:16px;
 
 
 
 box-shadow:
 
+
 0 0 25px
-rgba(255,100,160,.6);
+
+rgba(255,100,170,.8);
 
 
 
 transition:.3s;
 
 
+
 }
-
-
 
 
 
@@ -524,7 +838,9 @@ button:hover{
 
 transform:
 
-scale(1.08);
+translateY(-5px)
+scale(1.05);
+
 
 
 }
@@ -535,15 +851,52 @@ scale(1.08);
 
 
 
-@keyframes showWish{
+/* ===============================
+   动画
+================================ */
+
+
+@keyframes cakeFloat{
+
+
+0%,100%{
+
+transform:
+
+translateY(0);
+
+}
+
+
+50%{
+
+
+transform:
+
+translateY(-18px);
+
+
+
+}
+
+
+}
+
+
+
+
+
+@keyframes fire{
 
 
 from{
 
-opacity:0;
 
 transform:
-translateY(30px);
+
+scale(1)
+rotate(-5deg);
+
 
 
 }
@@ -551,13 +904,92 @@ translateY(30px);
 
 to{
 
+
+transform:
+
+scale(1.25)
+rotate(5deg);
+
+
+
+}
+
+
+
+}
+
+
+
+
+@keyframes titleShow{
+
+
+from{
+
+
+opacity:0;
+
+
+transform:
+
+translateY(-40px);
+
+
+
+}
+
+
+
+to{
+
+
 opacity:1;
 
 
 transform:
+
 translateY(0);
 
 
+
+}
+
+
+}
+
+
+
+
+@keyframes wishShow{
+
+
+from{
+
+
+opacity:0;
+
+
+transform:
+
+translateY(30px);
+
+
+
+}
+
+
+to{
+
+
+opacity:1;
+
+
+transform:
+
+translateY(0);
+
+
+
 }
 
 
@@ -566,7 +998,11 @@ translateY(0);
 
 
 
-/* 手机适配 */
+
+
+/* ===============================
+   手机微信适配
+================================ */
 
 
 @media(max-width:500px){
@@ -579,6 +1015,7 @@ translateY(0);
 font-size:38px;
 
 
+
 }
 
 
@@ -586,26 +1023,47 @@ font-size:38px;
 .name{
 
 
-font-size:30px;
+font-size:32px;
+
 
 
 }
 
 
 
-.mille-cake{
+.pink-cake{
 
 
 width:260px;
 
 
+
 }
+
 
 
 .love-card{
 
 
 font-size:14px;
+
+
+
+padding:20px;
+
+
+
+}
+
+
+
+button{
+
+
+padding:
+
+12px 30px;
+
 
 
 }
