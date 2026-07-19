@@ -27,9 +27,10 @@
 <div class="birthday-container">
 
 
+
     <!-- 日期 -->
 
-    <div class="date">
+    <div class="love-date">
 
         8.20
 
@@ -47,50 +48,186 @@
 
 
 
+    <div class="sub-title">
+
+        To My Love ❤️
+
+    </div>
+
+
+
+
     <!-- 名字 -->
 
     <h2 class="name">
 
-        袁雨婷 ❤️
+        袁雨婷
 
     </h2>
 
 
 
 
-    <!-- 蛋糕 -->
+
+    <!-- 法式草莓千层蛋糕 -->
 
     <div class="cake-area">
 
 
-        <div class="flame" id="flame">
-
-            🔥
-
-        </div>
+        <svg class="mille-cake"
+        viewBox="0 0 400 320">
 
 
+            <!-- 阴影 -->
 
-        <div class="cake">
-
-
-            <div class="cake-top">
-
-            </div>
-
-
-            <div class="cake-body">
-
-            </div>
+            <ellipse
+            cx="200"
+            cy="285"
+            rx="120"
+            ry="20"
+            class="cake-shadow"/>
 
 
-            <div class="cake-bottom">
 
-            </div>
+            <!-- 千层蛋糕主体 -->
+
+            <path d="
+            M80 210
+            Q200 250 320 210
+            L300 260
+            Q200 300 100 260
+            Z"
+            class="cake-bottom"/>
 
 
-        </div>
 
+            <!-- 奶油层 -->
+
+            <path d="
+            M90 190
+            Q200 225 310 190
+            L300 210
+            Q200 245 100 210
+            Z"
+            class="cream-layer"/>
+
+
+
+            <path d="
+            M90 165
+            Q200 200 310 165
+            L300 185
+            Q200 220 100 185
+            Z"
+            class="cream-layer pink"/>
+
+
+
+            <path d="
+            M90 140
+            Q200 175 310 140
+            L300 160
+            Q200 195 100 160
+            Z"
+            class="cream-layer"/>
+
+
+
+
+
+            <!-- 顶部奶油 -->
+
+            <ellipse
+            cx="200"
+            cy="130"
+            rx="110"
+            ry="35"
+            class="cake-top"/>
+
+
+
+
+            <!-- 草莓 -->
+
+            <circle
+            cx="140"
+            cy="95"
+            r="22"
+            class="strawberry"/>
+
+
+            <circle
+            cx="200"
+            cy="85"
+            r="25"
+            class="strawberry"/>
+
+
+            <circle
+            cx="260"
+            cy="95"
+            r="22"
+            class="strawberry"/>
+
+
+
+
+
+            <!-- 草莓叶子 -->
+
+            <path
+            d="
+            M200 60
+            l-18 22
+            h36z"
+            class="leaf"/>
+
+
+
+
+
+            <!-- 蜡烛 -->
+
+            <rect
+
+            x="195"
+
+            y="35"
+
+            width="10"
+
+            height="45"
+
+            rx="5"
+
+            class="candle"/>
+
+
+
+
+
+            <!-- 火焰 -->
+
+            <path
+
+            d="
+            M200 25
+            C185 45
+            200 55
+            210 35
+            C215 25
+            205 15
+            200 25"
+
+            class="fire"/>
+
+
+
+        </svg>
+
+
+
+        <div class="cake-glow"></div>
 
 
     </div>
@@ -99,9 +236,11 @@
 
 
 
-    <!-- 祝福 -->
 
-    <div class="message">
+
+    <!-- 生日祝福 -->
+
+    <div class="love-card">
 
 
         <p id="wish"></p>
@@ -114,26 +253,24 @@
 
 
 
-    <!-- 按钮 -->
+    <!-- 操作按钮 -->
 
 
     <button id="wishBtn">
 
-
-        🕯️ 许下生日愿望
-
+        🕯️ 点亮生日愿望
 
     </button>
+
 
 
 
     <button id="nextBtn">
 
-
-        进入我们的回忆 →
-
+        查看我们的回忆 ❤️
 
     </button>
+
 
 
 
@@ -143,15 +280,23 @@
 
 
 
-<!-- 音乐 -->
+
+
+<!-- 背景音乐 -->
+
 
 <audio id="birthdayMusic" loop>
 
 
-    <source src="assets/music/happy-birthday.mp3">
+    <source 
+    src="music/happy-birthday.mp3"
+    type="audio/mpeg">
 
 
 </audio>
+
+
+
 
 
 
