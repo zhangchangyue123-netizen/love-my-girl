@@ -1,0 +1,371 @@
+/* ===========================
+   Happy Birthday For 袁雨婷 ❤️
+   style.css
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:"Poppins","Microsoft YaHei",sans-serif;
+    color:#fff;
+}
+
+/* 星空背景 */
+body{
+    background:
+        radial-gradient(circle at top,#1c2b58 0%,#0c1025 45%,#050816 100%);
+}
+
+/* Canvas */
+#stars{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+}
+
+/* 深色遮罩 */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.45)
+    );
+    z-index:1;
+}
+
+/* 页面居中 */
+.container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* 毛玻璃卡片 */
+.glass{
+
+    width:420px;
+    max-width:95%;
+
+    padding:60px 40px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.35);
+
+    text-align:center;
+
+    animation:fadeUp 1.4s ease;
+}
+
+/* 爱心 */
+.heart{
+
+    font-size:60px;
+
+    margin-bottom:18px;
+
+    animation:heartBeat 1.8s infinite;
+
+}
+
+/* 主标题 */
+h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    color:#fff;
+
+    text-shadow:
+    0 0 12px rgba(255,255,255,.6);
+
+}
+
+/* 名字 */
+h2{
+
+    margin-top:18px;
+
+    font-size:32px;
+
+    color:#ff7aa8;
+
+    letter-spacing:4px;
+
+}
+
+/* 打字机文字 */
+#typing{
+
+    margin-top:35px;
+
+    min-height:70px;
+
+    line-height:35px;
+
+    font-size:19px;
+
+    color:#f4f4f4;
+
+    opacity:.9;
+
+}
+
+/* 按钮 */
+button{
+
+    margin-top:45px;
+
+    padding:16px 45px;
+
+    border:none;
+
+    border-radius:60px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+    135deg,
+    #8b5cf6,
+    #ff5e9c
+    );
+
+    box-shadow:
+    0 8px 25px rgba(255,94,156,.45);
+
+    transition:.35s;
+
+    animation:breathe 2.5s infinite;
+
+}
+
+button:hover{
+
+    transform:
+    translateY(-4px)
+    scale(1.05);
+
+    box-shadow:
+    0 15px 40px rgba(255,94,156,.6);
+
+}
+
+/* 呼吸动画 */
+@keyframes breathe{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* 爱心跳动 */
+@keyframes heartBeat{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    20%{
+
+        transform:scale(1.15);
+
+    }
+
+    40%{
+
+        transform:scale(.95);
+
+    }
+
+    60%{
+
+        transform:scale(1.18);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* 卡片出现 */
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+/* 星空光晕 */
+.glass::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:240px;
+
+    height:240px;
+
+    background:
+
+    radial-gradient(
+    rgba(255,255,255,.18),
+    transparent 70%
+    );
+
+    left:-100px;
+
+    top:-100px;
+
+    filter:blur(20px);
+
+}
+
+/* 底部发光 */
+.glass::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:200px;
+
+    height:200px;
+
+    background:
+
+    radial-gradient(
+
+    rgba(255,94,156,.18),
+
+    transparent 70%
+
+    );
+
+    right:-70px;
+
+    bottom:-70px;
+
+    filter:blur(25px);
+
+}
+
+/* 手机适配 */
+
+@media(max-width:768px){
+
+.glass{
+
+padding:45px 25px;
+
+border-radius:25px;
+
+}
+
+h1{
+
+font-size:32px;
+
+}
+
+h2{
+
+font-size:26px;
+
+}
+
+.heart{
+
+font-size:50px;
+
+}
+
+#typing{
+
+font-size:17px;
+
+line-height:30px;
+
+}
+
+button{
+
+width:100%;
+
+font-size:17px;
+
+}
+
+}
