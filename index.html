@@ -15,32 +15,50 @@
     <meta name="apple-mobile-web-app-status-bar-style"
           content="black-translucent">
 
-    <title>Happy Birthday · 宝宝 ❤️</title>
+    <title>
+        Happy Birthday · 宝宝 ❤️
+    </title>
+
 
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
+
 <body>
 
+
     <!-- 星空背景 -->
+
     <canvas id="stars"></canvas>
 
-    <!-- 柔光 -->
+
+    <!-- 背景柔光 -->
+
     <div class="glow glow1"></div>
+
     <div class="glow glow2"></div>
 
+
+
     <!-- 流星 -->
+
     <div class="meteor meteor1"></div>
+
     <div class="meteor meteor2"></div>
 
-    <!-- 页面主体 -->
+
+
+    <!-- 首页内容 -->
 
     <main id="intro">
 
+
         <section class="content">
 
-            <!-- 第一行 -->
+
+
+            <!-- 英文标题 -->
 
             <p class="small fade-item">
 
@@ -48,7 +66,10 @@
 
             </p>
 
-            <!-- 第二行 -->
+
+
+
+            <!-- 主标题 -->
 
             <h1 class="title fade-item">
 
@@ -56,71 +77,109 @@
 
             </h1>
 
-            <!-- 第三行 -->
+
+
+
+            <!-- 副标题 -->
 
             <h2 class="subtitle fade-item">
 
-                藏着一份<br>
 
-                只属于你的惊喜。
+                藏着属于你的一份小幸运。
+
 
             </h2>
+
+
+
 
             <!-- 分割线 -->
 
             <div class="line fade-item"></div>
 
-            <!-- 提示 -->
+
+
+
+            <!-- 小文字 -->
 
             <p class="tip fade-item">
 
-                戴上耳机，
+                愿今天的你，
 
-                找一个安静的地方，
-
-                然后慢慢开始今晚的故事。
+                收到一份特别的惊喜。
 
             </p>
 
-            <!-- 按钮 -->
+
+
+
+            <!-- 开始按钮 -->
 
             <button
+
                 id="openBtn"
+
                 class="fade-item">
 
-                ✨ 去看看 ❤️
+
+                ✨ 打开看看
+
 
             </button>
 
+
+
         </section>
+
+
 
     </main>
 
-    <!-- 星空粒子容器 -->
+
+
+
+    <!-- 粒子层 -->
 
     <div id="particleLayer"></div>
 
-    <!-- 转场 -->
+
+
+
+    <!-- 转场黑幕 -->
 
     <div id="fade"></div>
+
+
+
 
     <!-- 背景音乐 -->
 
     <audio
+
         id="bgm"
+
         preload="auto"
+
         loop>
 
+
         <source
+
             src="assets/music/happy-birthday.mp3"
+
             type="audio/mpeg">
+
 
     </audio>
 
-    <!-- JS -->
+
+
 
     <script src="js/main.js"></script>
 
+
+
 </body>
+
 
 </html>
