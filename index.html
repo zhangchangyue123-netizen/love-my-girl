@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <title>Happy Birthday · 宝宝 ❤️</title>
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <meta name="theme-color" content="#000000">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent">
+
+    <title>Happy Birthday · 宝宝 ❤️</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -22,64 +23,101 @@
 
 <body>
 
-    <!-- 星空 -->
+    <!-- 星空背景 -->
     <canvas id="stars"></canvas>
 
-    <!-- 星光 -->
+    <!-- 柔光 -->
     <div class="glow glow1"></div>
     <div class="glow glow2"></div>
 
     <!-- 流星 -->
     <div class="meteor meteor1"></div>
     <div class="meteor meteor2"></div>
-    <div class="meteor meteor3"></div>
 
-    <!-- 主体 -->
+    <!-- 页面主体 -->
+
     <main id="intro">
 
-        <div class="content">
+        <section class="content">
 
-            <p class="small">
+            <!-- 第一行 -->
+
+            <p class="small fade-item">
+
                 To My Baby
+
             </p>
 
-            <h1 class="title">
-                有一份礼物
+            <!-- 第二行 -->
+
+            <h1 class="title fade-item">
+
+                今晚的星空，
+
             </h1>
 
-            <h2 class="subtitle">
-                正在等待它真正的主人
+            <!-- 第三行 -->
+
+            <h2 class="subtitle fade-item">
+
+                藏着一份<br>
+
+                只属于你的惊喜。
+
             </h2>
 
-            <div class="line"></div>
+            <!-- 分割线 -->
 
-            <p class="tip">
+            <div class="line fade-item"></div>
 
-                请找一个安静的地方，
+            <!-- 提示 -->
+
+            <p class="tip fade-item">
 
                 戴上耳机，
 
-                慢慢打开它。
+                找一个安静的地方，
+
+                然后慢慢开始今晚的故事。
 
             </p>
 
-            <button id="openBtn">
+            <!-- 按钮 -->
 
-                ✨ 开启礼物 ✨
+            <button
+                id="openBtn"
+                class="fade-item">
+
+                ✨ 去看看 ❤️
 
             </button>
 
-        </div>
+        </section>
 
     </main>
 
-    <!-- 开场渐变 -->
+    <!-- 星空粒子容器 -->
+
+    <div id="particleLayer"></div>
+
+    <!-- 转场 -->
+
     <div id="fade"></div>
 
     <!-- 背景音乐 -->
-    <audio id="bgm" loop preload="auto">
-        <source src="assets/music/happy-birthday.mp3" type="audio/mpeg">
+
+    <audio
+        id="bgm"
+        preload="auto"
+        loop>
+
+        <source
+            src="assets/music/happy-birthday.mp3"
+            type="audio/mpeg">
+
     </audio>
+
+    <!-- JS -->
 
     <script src="js/main.js"></script>
 
