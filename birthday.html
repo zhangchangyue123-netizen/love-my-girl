@@ -3,168 +3,741 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <title>Happy Birthday ❤️</title>
+<title>
+Happy Birthday · 宝宝 ❤️
+</title>
 
-    <link rel="stylesheet" href="css/birthday.css">
+
+<link rel="stylesheet" href="css/birthday.css">
+
 
 </head>
 
+
 <body>
 
-<!-- =========================
-黑暗蜡烛开场（第一层）
-========================= -->
-
-<div id="intro" class="intro">
-
-    <div class="intro-content">
-
-        <div class="intro-text">
-
-            轻触屏幕
-
-        </div>
-
-        <div class="single-candle">
-
-            <div class="flame"></div>
-
-            <div class="candle"></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- 星空 -->
-
-<canvas id="birthdayStars"></canvas>
-
-<!-- 飘花 -->
-
-<div id="petals"></div>
-
-<!-- =========================
-生日主体
-========================= -->
-
-<div class="birthday-container">
-
-    <!-- 日期 -->
-
-    <div class="birthday-date">
-
-        2026 · 08 · 20
-
-    </div>
-
-    <!-- 标题 -->
-
-    <h1 class="birthday-title">
-
-        Happy Birthday
-
-    </h1>
-
-    <!-- 名字 -->
-
-    <h2 class="birthday-name">
-
-        宝宝 ❤️
-
-    </h2>
-
-    <!-- 蛋糕 -->
-
-    <div class="cake-section">
-
-        <div class="cake-light"></div>
-
-        <img
-            src="images/cake.png"
-            class="cake"
-            alt="Birthday Cake">
-
-    </div>
-
-    <!-- 毛玻璃祝福 -->
-
-    <div class="wish-card">
-
-        <p id="wish">
-
-            宝宝，生日快乐 ❤️
-
-            <br><br>
-
-            今天是属于你的特别日子。
-
-            <br>
-
-            希望你的笑容永远像今天一样灿烂。
-
-            <br><br>
-
-            遇见你，
-
-            是我最幸运的一件事。
-
-            <br><br>
-
-            ❤️
-
-        </p>
-
-    </div>
-
-    <!-- 按钮 -->
-
-    <div class="button-group">
-
-        <button id="wishBtn">
-
-            🎁 收下生日惊喜
-
-        </button>
-
-        <button id="nextBtn">
-
-            📷 进入我们的回忆
-
-        </button>
-
-    </div>
-
-</div>
-
-<!-- 音乐按钮 -->
-
-<div id="musicBtn" class="music-btn">
-
-    🎵
-
-</div>
 
 <!-- 背景音乐 -->
 
-<audio
-    id="birthdayMusic"
-    loop>
+<audio id="birthdayMusic" loop>
 
-    <source src="music/happy-birthday.mp3" type="audio/mpeg">
+    <source 
+    src="assets/music/happy-birthday.mp3"
+    type="audio/mpeg">
 
 </audio>
 
-<!-- JS -->
+
+
+<!-- 全局粒子 -->
+
+<div id="particles"></div>
+
+
+
+<!-- 故事主体 -->
+
+<main id="story">
+
+
+
+
+
+<!-- =========================
+第一幕 星空
+========================= -->
+
+
+<section class="scene scene-1 active">
+
+
+<canvas id="birthdayStars"></canvas>
+
+
+<div class="scene-content">
+
+
+<p class="chapter">
+
+Chapter 01
+
+</p>
+
+
+<h1>
+
+宝宝
+
+</h1>
+
+
+<p class="message">
+
+今天，
+
+是属于你的日子。
+
+</p>
+
+
+
+<div class="birthday-date">
+
+2026.08.20
+
+</div>
+
+
+
+<button class="next-btn">
+
+继续 ❤️
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- =========================
+第二幕 相遇
+========================= -->
+
+
+<section class="scene scene-2">
+
+
+<div class="scene-content">
+
+
+<p class="chapter">
+
+Chapter 02
+
+</p>
+
+
+
+<h1>
+
+我们的开始
+
+</h1>
+
+
+
+<div class="time-line">
+
+
+<div class="time-item">
+
+
+<span>
+
+06.04
+
+</span>
+
+
+<p>
+
+第一次认识你
+
+</p>
+
+
+</div>
+
+
+
+<div class="line-dot">
+
+♥
+
+</div>
+
+
+
+<div class="time-item">
+
+
+<span>
+
+08.20
+
+</span>
+
+
+<p>
+
+你的生日
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<p class="message">
+
+从遇见你的那天开始，
+
+我的世界多了一份期待。
+
+</p>
+
+
+
+<button class="next-btn">
+
+继续
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+第三幕 蛋糕
+========================= -->
+
+
+<section class="scene scene-3">
+
+
+<div class="scene-content">
+
+
+<p class="chapter">
+
+Chapter 03
+
+</p>
+
+
+<h1>
+
+生日愿望
+
+</h1>
+
+
+
+<div class="cake-area">
+
+
+<img
+
+src="assets/images/cake.png"
+
+class="cake">
+
+
+<div id="flame">
+
+🕯️
+
+</div>
+
+
+</div>
+
+
+
+<p class="message">
+
+闭上眼睛，
+
+许一个属于你的愿望。
+
+</p>
+
+
+
+<button id="lightCake">
+
+点亮蜡烛
+
+</button>
+
+
+
+<button class="next-btn">
+
+继续
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+第四幕 照片
+========================= -->
+
+
+<section class="scene scene-4">
+
+
+<div class="scene-content">
+
+
+<p class="chapter">
+
+Chapter 04
+
+</p>
+
+
+<h1>
+
+我们的回忆
+
+</h1>
+
+
+
+<div class="photo-wall">
+
+
+<div class="photo">
+
+<img src="assets/images/photo1.jpg">
+
+</div>
+
+
+<div class="photo">
+
+<img src="assets/images/photo2.jpg">
+
+</div>
+
+
+<div class="photo">
+
+<img src="assets/images/photo3.jpg">
+
+</div>
+
+
+<div class="photo">
+
+<img src="assets/images/photo4.jpg">
+
+</div>
+
+
+<div class="photo">
+
+<img src="assets/images/photo5.jpg">
+
+</div>
+
+
+<div class="photo">
+
+<img src="assets/images/photo6.jpg">
+
+</div>
+
+
+<div class="photo">
+
+<img src="assets/images/photo7.jpg">
+
+</div>
+
+
+
+</div>
+
+
+
+<button class="next-btn">
+
+继续
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+第五幕 时间
+========================= -->
+
+
+<section class="scene scene-5">
+
+
+<div class="scene-content">
+
+
+<p class="chapter">
+
+Chapter 05
+
+</p>
+
+
+
+<h1>
+
+慢慢靠近
+
+</h1>
+
+
+
+<div class="memory">
+
+
+<p>
+
+第一次聊天
+
+</p>
+
+
+<p>
+
+第一次分享生活
+
+</p>
+
+
+<p>
+
+第一次期待见面
+
+</p>
+
+
+<p>
+
+越来越喜欢你
+
+</p>
+
+
+
+</div>
+
+
+
+<button class="next-btn">
+
+继续
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+第六幕 告白
+========================= -->
+
+
+<section class="scene scene-6">
+
+
+<div class="scene-content love">
+
+
+<p class="chapter">
+
+Chapter 06
+
+</p>
+
+
+
+<p>
+
+遇见你以后，
+
+</p>
+
+
+
+<p>
+
+普通的日子，
+
+</p>
+
+
+
+<p>
+
+也开始变得特别。
+
+</p>
+
+
+
+
+<h1>
+
+想和你在一起一辈子。
+
+</h1>
+
+
+
+<p>
+
+❤️
+
+</p>
+
+
+
+<button class="next-btn">
+
+继续
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+第七幕 礼物
+========================= -->
+
+
+<section class="scene scene-7">
+
+
+<div class="scene-content">
+
+
+<p class="chapter">
+
+Chapter 07
+
+</p>
+
+
+
+<div class="gift-box"
+
+id="giftBox">
+
+🎁
+
+</div>
+
+
+
+<h1>
+
+还有一份礼物
+
+</h1>
+
+
+
+<p>
+
+打开看看吧。
+
+</p>
+
+
+
+<button id="openGift">
+
+打开
+
+</button>
+
+
+
+<button class="next-btn">
+
+继续
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =========================
+第八幕 最终
+========================= -->
+
+
+<section class="scene scene-8">
+
+
+<div class="scene-content final">
+
+
+<p class="chapter">
+
+Chapter 08
+
+</p>
+
+
+
+<h1>
+
+Happy Birthday
+
+</h1>
+
+
+
+<h2>
+
+宝宝 ❤️
+
+</h2>
+
+
+
+<p>
+
+愿你每天都开心。
+
+</p>
+
+
+
+<p>
+
+愿未来每一个生日，
+
+都有我陪着你。
+
+</p>
+
+
+
+<div class="from">
+
+—— 张长跃
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+</main>
+
+
 
 <script src="js/birthday.js"></script>
+
+
 
 </body>
 
 </html>
+
