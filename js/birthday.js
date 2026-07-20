@@ -1,70 +1,92 @@
 /*
 =================================================
- Happy Birthday · Story Animation
- birthday.js
+ Happy Birthday Story
+ Fixed Version
 =================================================
 */
 
 
 document.addEventListener(
-    "DOMContentLoaded",
-    ()=>{
+"DOMContentLoaded",
+()=>{
 
 
-        initStory();
+    initStory();
 
-        initStars();
+    initStars();
 
-        initMusic();
+    initMusic();
 
-        initCake();
+    initCake();
 
-        initGift();
-
-
-    }
-);
+    initGift();
 
 
+});
 
 
 
-/* ================================================
-   八幕故事控制
-================================================ */
+
+
+/* =====================================
+   八幕切换
+===================================== */
 
 
 function initStory(){
 
 
     const scenes =
-        document.querySelectorAll(".scene");
+    document.querySelectorAll(".scene");
 
 
-    const nextButtons =
-        document.querySelectorAll(".next-btn");
+    const buttons =
+    document.querySelectorAll(".next-btn");
 
 
-    let current = 0;
-
-
-
-    function showScene(index){
-
-
-        scenes.forEach(scene=>{
-
-            scene.classList.remove(
-                "active"
-            );
-
-        });
+    let index=0;
 
 
 
-        scenes[index].classList.add(
-            "active"
-        );
+    function changeScene(next){
+
+
+        if(next>=scenes.length){
+
+            return;
+
+        }
+
+
+
+        scenes[index]
+        .classList.remove("active");
+
+
+
+        setTimeout(()=>{
+
+
+            scenes[index]
+            .style.visibility="hidden";
+
+
+
+            index=next;
+
+
+
+            scenes[index]
+            .style.visibility="visible";
+
+
+            scenes[index]
+            .classList.add("active");
+
+
+
+        },200);
+
 
 
     }
@@ -72,32 +94,22 @@ function initStory(){
 
 
 
-    nextButtons.forEach(btn=>{
+    buttons.forEach(btn=>{
 
 
         btn.addEventListener(
-            "click",
-            ()=>{
+        "click",
+        ()=>{
 
 
-                if(current < scenes.length-1){
+            changeScene(index+1);
 
 
-                    current++;
-
-
-                    showScene(current);
-
-
-                    createHearts();
-
-
-                }
+            createHearts();
 
 
 
-            }
-        );
+        });
 
 
     });
@@ -113,40 +125,41 @@ function initStory(){
 
 
 
-/* ================================================
+/* =====================================
    音乐
-================================================ */
+===================================== */
 
 
 function initMusic(){
 
 
-    const music =
-        document.getElementById(
-            "birthdayMusic"
-        );
+    const music=
+    document.getElementById(
+        "birthdayMusic"
+    );
 
 
     if(!music)return;
 
 
 
-    document.addEventListener(
-        "click",
-        ()=>{
+    document.body.addEventListener(
+    "click",
+    ()=>{
 
 
-            music.play()
-            .catch(()=>{});
+        music.volume=0.5;
 
 
-        },
+        music.play()
+        .catch(()=>{});
 
-        {
-            once:true
-        }
 
-    );
+    },
+
+    {
+        once:true
+    });
 
 
 }
@@ -158,29 +171,27 @@ function initMusic(){
 
 
 
-
-/* ================================================
-   星空粒子
-================================================ */
+/* =====================================
+   星空
+===================================== */
 
 
 function initStars(){
 
 
-    const canvas =
-        document.getElementById(
-            "birthdayStars"
-        );
+    const canvas=
+    document.getElementById(
+        "birthdayStars"
+    );
+
 
 
     if(!canvas)return;
 
 
 
-    const ctx =
-        canvas.getContext(
-            "2d"
-        );
+    const ctx=
+    canvas.getContext("2d");
 
 
 
@@ -191,12 +202,12 @@ function initStars(){
     function resize(){
 
 
-        canvas.width =
-            window.innerWidth;
+        canvas.width=
+        window.innerWidth;
 
 
-        canvas.height =
-            window.innerHeight;
+        canvas.height=
+        window.innerHeight;
 
 
 
@@ -206,7 +217,7 @@ function initStars(){
 
         for(
             let i=0;
-            i<180;
+            i<220;
             i++
         ){
 
@@ -225,27 +236,21 @@ function initStars(){
                 canvas.height,
 
 
-                size:
-                Math.random()*2,
+                r:
+                Math.random()*1.8,
 
 
-                speed:
+                a:
                 Math.random()
-                *.3+.1,
-
-
-                alpha:
-                Math.random()
-
 
             });
+
 
 
         }
 
 
     }
-
 
 
 
@@ -260,9 +265,7 @@ function initStars(){
 
 
 
-
-
-    function draw(){
+    function animate(){
 
 
         ctx.clearRect(
@@ -274,49 +277,38 @@ function initStars(){
 
 
 
-        stars.forEach(star=>{
+        stars.forEach(s=>{
 
 
-            star.alpha +=
-                star.speed*.01;
+            s.a+=0.01;
 
 
 
-            if(star.alpha>1){
-
-                star.alpha=0;
-
-            }
+            if(s.a>1)
+                s.a=0;
 
 
 
             ctx.beginPath();
 
 
-
             ctx.arc(
-
-                star.x,
-
-                star.y,
-
-                star.size,
-
+                s.x,
+                s.y,
+                s.r,
                 0,
-
                 Math.PI*2
-
             );
 
 
 
-            ctx.fillStyle =
+            ctx.fillStyle=
             `
             rgba(
             255,
             255,
             255,
-            ${star.alpha}
+            ${s.a}
             )
             `;
 
@@ -331,14 +323,15 @@ function initStars(){
 
 
         requestAnimationFrame(
-            draw
+            animate
         );
+
 
     }
 
 
 
-    draw();
+    animate();
 
 
 }
@@ -351,26 +344,24 @@ function initStars(){
 
 
 
-/* ================================================
-   蛋糕蜡烛
-================================================ */
+/* =====================================
+   蜡烛
+===================================== */
 
 
 function initCake(){
 
 
-
-    const btn =
-        document.getElementById(
-            "lightCake"
-        );
-
+    const btn=
+    document.getElementById(
+        "lightCake"
+    );
 
 
-    const flame =
-        document.getElementById(
-            "flame"
-        );
+    const flame=
+    document.getElementById(
+        "flame"
+    );
 
 
 
@@ -378,42 +369,46 @@ function initCake(){
 
 
 
-    let light=false;
+    let open=false;
 
 
 
     btn.onclick=()=>{
 
 
-        light=!light;
+        open=!open;
 
 
 
-        if(light){
+        if(open){
 
 
             flame.innerHTML="🔥";
 
 
-            flame.style
-            .filter=
-            "drop-shadow(0 0 20px orange)";
-
+            flame.classList.add(
+                "fire"
+            );
 
 
             btn.innerHTML=
             "吹灭蜡烛";
 
 
+
             createFireworks();
 
 
-        }
 
-        else{
+        }else{
 
 
             flame.innerHTML="🕯️";
+
+
+            flame.classList.remove(
+                "fire"
+            );
 
 
             btn.innerHTML=
@@ -423,9 +418,7 @@ function initCake(){
         }
 
 
-
     };
-
 
 
 }
@@ -437,43 +430,39 @@ function initCake(){
 
 
 
-
-
-/* ================================================
-   礼物盒
-================================================ */
+/* =====================================
+   礼物
+===================================== */
 
 
 function initGift(){
 
 
-    const gift =
-        document.getElementById(
-            "giftBox"
+    const btn=
+    document.getElementById(
+        "openGift"
+    );
+
+
+    const gift=
+    document.getElementById(
+        "giftBox"
+    );
+
+
+    if(!btn)return;
+
+
+
+    btn.onclick=()=>{
+
+
+        gift.innerHTML="💖";
+
+
+        gift.classList.add(
+            "open"
         );
-
-
-    const open =
-        document.getElementById(
-            "openGift"
-        );
-
-
-    if(!open)return;
-
-
-
-    open.onclick=()=>{
-
-
-        gift.style.transform=
-            "scale(1.5) rotate(20deg)";
-
-
-
-        gift.innerHTML=
-            "💖";
-
 
 
         createLoveRain();
@@ -492,10 +481,9 @@ function initGift(){
 
 
 
-
-/* ================================================
-   爱心
-================================================ */
+/* =====================================
+   爱心动画
+===================================== */
 
 
 function createHearts(){
@@ -503,82 +491,34 @@ function createHearts(){
 
 
     for(
-        let i=0;
-        i<8;
-        i++
+    let i=0;i<10;i++
     ){
 
 
-        const heart =
-            document.createElement(
-                "div"
-            );
-
-
-        heart.innerHTML="❤️";
-
-
-
-        heart.style.position=
-            "fixed";
-
-
-
-        heart.style.left=
-            Math.random()*100+
-            "%";
-
-
-
-        heart.style.bottom=
-            "0";
-
-
-
-        heart.style.fontSize=
-            "20px";
-
-
-
-        heart.style.zIndex=
-            "999";
-
-
-
-        heart.style.transition=
-            "3s ease";
-
-
-
-        document.body.appendChild(
-            heart
+        const h=
+        document.createElement(
+            "div"
         );
 
 
-
-        setTimeout(()=>{
-
-
-            heart.style.transform=
-            `
-            translateY(-90vh)
-            scale(2)
-            `;
+        h.innerHTML="❤️";
 
 
-
-            heart.style.opacity=0;
-
+        h.className="heart";
 
 
-        },100);
+        h.style.left=
+        Math.random()*100+"%";
+
+
+        document.body.appendChild(h);
 
 
 
         setTimeout(()=>{
 
 
-            heart.remove();
+            h.remove();
 
 
         },3000);
@@ -588,7 +528,6 @@ function createHearts(){
     }
 
 
-
 }
 
 
@@ -597,90 +536,39 @@ function createHearts(){
 
 
 
-
-
-/* ================================================
-   爱心雨
-================================================ */
-
-
 function createLoveRain(){
 
 
-
     for(
-        let i=0;
-        i<40;
-        i++
+    let i=0;i<50;i++
     ){
 
 
-        const love =
-            document.createElement(
-                "div"
-            );
-
-
-        love.innerHTML="💗";
-
-
-
-        love.style.position=
-        "fixed";
-
-
-
-        love.style.top="-20px";
-
-
-
-        love.style.left=
-        Math.random()*100+
-        "%";
-
-
-
-        love.style.fontSize=
-        Math.random()*20+15+
-        "px";
-
-
-
-        love.style.transition=
-        "4s linear";
-
-
-
-        love.style.zIndex=
-        "9999";
-
-
-
-        document.body.appendChild(
-            love
+        let h=
+        document.createElement(
+            "div"
         );
 
 
+        h.innerHTML="💗";
+
+
+        h.className="rain-heart";
+
+
+        h.style.left=
+        Math.random()*100+"%";
+
+
+
+        document.body.appendChild(h);
+
+
 
         setTimeout(()=>{
 
 
-            love.style.transform=
-            `
-            translateY(100vh)
-            rotate(360deg)
-            `;
-
-
-
-        },100);
-
-
-
-        setTimeout(()=>{
-
-
-            love.remove();
+            h.remove();
 
 
         },5000);
@@ -690,7 +578,6 @@ function createLoveRain(){
     }
 
 
-
 }
 
 
@@ -699,65 +586,29 @@ function createLoveRain(){
 
 
 
-
-/* ================================================
-   烟花
-================================================ */
-
-
 function createFireworks(){
 
 
     for(
-        let i=0;
-        i<20;
-        i++
+    let i=0;i<30;i++
     ){
 
 
-        const spark =
-            document.createElement(
-                "div"
-            );
+        let star=
+        document.createElement(
+            "div"
+        );
 
 
-
-        spark.innerHTML="✨";
-
+        star.innerHTML="✨";
 
 
-        spark.style.position=
-            "fixed";
-
-
-
-        spark.style.left=
-            "50%";
-
-
-
-        spark.style.top=
-            "50%";
-
-
-
-        spark.style.fontSize=
-            "20px";
-
-
-
-        spark.style.transition=
-            "2s ease";
-
-
-
-        spark.style.zIndex=
-            "999";
-
+        star.className=
+        "firework";
 
 
         document.body.appendChild(
-            spark
+            star
         );
 
 
@@ -765,32 +616,10 @@ function createFireworks(){
         setTimeout(()=>{
 
 
-            spark.style.transform=
-            `
-            translate(
-            ${Math.random()*400-200}px,
-            ${Math.random()*400-200}px
-            )
-            scale(0)
-            `;
+            star.remove();
 
 
-
-            spark.style.opacity=0;
-
-
-
-        },100);
-
-
-
-        setTimeout(()=>{
-
-
-            spark.remove();
-
-
-        },2200);
+        },2000);
 
 
 
