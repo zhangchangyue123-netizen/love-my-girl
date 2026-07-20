@@ -1,56 +1,128 @@
-/* =================================
-   袁雨婷生日祝福网页
-   粉色恋爱主题 birthday.css
-================================= */
+/* =====================================================
+   Happy Birthday Story Page
+   birthday.css
+===================================================== */
 
 
-/* 全局 */
+/* =========================
+   基础
+========================= */
 
 *{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
-
+html,
 body{
 
+    width:100%;
+    height:100%;
 
-width:100%;
+    overflow:hidden;
 
-height:100vh;
+    background:#05050b;
 
+    color:white;
 
-overflow:hidden;
+    font-family:
 
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
 
-
-font-family:
-
-"Microsoft YaHei",
-"PingFang SC",
-sans-serif;
-
-
-
-color:white;
+}
 
 
 
-background:
+body::before{
 
-radial-gradient(
-circle at top,
-#ffd1e8 0%,
-#b86aa8 35%,
-#3a1648 75%,
-#120816 100%
-);
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        rgba(255,182,193,.15),
+        transparent 40%
+    ),
+
+    linear-gradient(
+        180deg,
+        #03030a,
+        #080812
+    );
+
+
+    z-index:-2;
+
+}
+
+
+
+
+/* =========================
+   故事容器
+========================= */
+
+
+#story{
+
+    width:100%;
+
+    height:100%;
+
+    position:relative;
+
+}
+
+
+
+
+/* =========================
+   每一幕
+========================= */
+
+
+.scene{
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    opacity:0;
+
+
+    visibility:hidden;
+
+
+    transform:scale(1.05);
+
+
+    transition:
+
+        opacity 1.2s ease,
+
+        transform 1.5s ease;
 
 
 
@@ -58,66 +130,104 @@ circle at top,
 
 
 
-/* ===============================
-   星空背景
-================================ */
+.scene.active{
+
+
+    opacity:1;
+
+
+    visibility:visible;
+
+
+    transform:scale(1);
+
+
+
+}
+
+
+
+
+/* =========================
+   内容
+========================= */
+
+
+.scene-content{
+
+
+    width:90%;
+
+
+    max-width:650px;
+
+
+    text-align:center;
+
+
+    animation:
+
+        contentShow 1.5s ease;
+
+
+
+}
+
+
+
+
+@keyframes contentShow{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+
+            translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0);
+
+    }
+
+
+}
+
+
+
+
+
+/* =========================
+   星空
+========================= */
 
 
 #birthdayStars{
 
 
-position:fixed;
+    position:absolute;
 
 
-left:0;
-
-top:0;
+    inset:0;
 
 
-width:100%;
-
-height:100%;
+    width:100%;
 
 
-z-index:-1;
+    height:100%;
 
 
-}
-
-
-
-
-
-/* ===============================
-   主容器
-================================ */
-
-
-.birthday-container{
-
-
-height:100vh;
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-
-text-align:center;
-
-
-
-padding:20px;
-
+    z-index:-1;
 
 
 }
@@ -125,30 +235,26 @@ padding:20px;
 
 
 
+/* =========================
+   Chapter
+========================= */
 
 
-/* 日期 */
+.chapter{
 
 
-.love-date{
+    font-size:14px;
 
 
-font-size:20px;
+    letter-spacing:8px;
 
 
-letter-spacing:10px;
+    color:
+
+    rgba(255,255,255,.55);
 
 
-
-color:#ffe5f1;
-
-
-
-text-shadow:
-
-0 0 15px
-#ff9ec7;
-
+    margin-bottom:35px;
 
 
 }
@@ -156,68 +262,43 @@ text-shadow:
 
 
 
-
-/* 主标题 */
-
-
-.title{
+/* =========================
+   标题
+========================= */
 
 
-margin-top:15px;
+h1{
 
 
+    font-family:
 
-font-size:48px;
-
-
-
-font-family:
-
-"Times New Roman",
-serif;
+        "STKaiti",
+        "KaiTi",
+        serif;
 
 
+    font-size:
 
-letter-spacing:3px;
+        clamp(38px,7vw,64px);
 
 
+    font-weight:400;
 
 
-background:
+    letter-spacing:5px;
 
-linear-gradient(
 
-90deg,
-
-#ffffff,
-
-#ffb6d9,
-
-#ffffff
-
-);
+    line-height:1.5;
 
 
 
--webkit-background-clip:text;
+    color:#fff6fa;
 
 
-color:transparent;
+    text-shadow:
 
 
-
-
-text-shadow:
-
-
-0 0 30px
-rgba(255,150,200,.8);
-
-
-
-animation:
-
-titleShow 1.5s;
+        0 0 20px rgba(255,182,193,.3);
 
 
 
@@ -227,17 +308,16 @@ titleShow 1.5s;
 
 
 
-.sub-title{
+h2{
 
 
-margin-top:10px;
+    font-size:36px;
 
 
-font-size:18px;
+    font-weight:300;
 
 
-color:#ffe3ef;
-
+    color:#ffdbea;
 
 
 }
@@ -245,33 +325,25 @@ color:#ffe3ef;
 
 
 
-.name{
+
+.message{
 
 
-margin-top:15px;
+    margin-top:35px;
 
 
-font-size:38px;
+    font-size:18px;
 
 
-
-font-weight:bold;
-
+    line-height:2;
 
 
-color:#fff;
+    font-weight:300;
 
 
+    color:
 
-text-shadow:
-
-
-0 0 20px
-#ff79b8,
-
-
-0 0 50px
-#ff79b8;
+    rgba(255,255,255,.85);
 
 
 
@@ -281,30 +353,169 @@ text-shadow:
 
 
 
-/* ===============================
-   粉色草莓千层蛋糕
-================================ */
+/* =========================
+   日期
+========================= */
+
+
+.birthday-date{
+
+
+    margin-top:35px;
+
+
+    font-size:22px;
+
+
+    letter-spacing:5px;
+
+
+    color:#ffd4e7;
+
+
+
+}
+
+
+
+
+
+/* =========================
+   按钮
+========================= */
+
+
+.next-btn,
+#lightCake,
+#openGift{
+
+
+    margin-top:40px;
+
+
+    padding:15px 40px;
+
+
+    border-radius:999px;
+
+
+    border:
+
+    1px solid
+
+    rgba(255,255,255,.25);
+
+
+
+    background:
+
+    rgba(255,255,255,.12);
+
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+
+    color:white;
+
+
+    font-size:16px;
+
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+
+
+button{
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+
+
+/* =========================
+   时间线
+========================= */
+
+
+.time-line{
+
+
+    margin:40px 0;
+
+
+}
+
+
+
+.time-item span{
+
+
+    font-size:36px;
+
+
+    color:#ffd6e8;
+
+
+}
+
+
+
+.time-item p{
+
+
+    margin-top:10px;
+
+
+}
+
+
+
+
+
+.line-dot{
+
+
+    margin:25px;
+
+
+    color:#ff9fc9;
+
+
+    font-size:25px;
+
+
+}
+
+
+
+
+
+/* =========================
+   蛋糕
+========================= */
 
 
 .cake-area{
 
 
-position:relative;
+    margin:40px auto;
 
 
-
-margin:20px 0;
-
-
-
-display:flex;
-
-
-justify-content:center;
-
-
-align-items:center;
-
+    position:relative;
 
 
 }
@@ -312,608 +523,47 @@ align-items:center;
 
 
 
+.cake{
 
 
-.pink-cake{
+    width:220px;
 
 
-width:310px;
+    max-width:70%;
 
 
+    animation:
 
-filter:
-
-
-drop-shadow(
-
-0 25px 35px
-
-rgba(255,80,160,.6)
-
-);
-
-
-
-animation:
-
-
-cakeFloat 4s infinite ease-in-out;
+    cakeFloat 4s infinite ease-in-out;
 
 
 
 }
 
 
-
-
-
-/* 蛋糕阴影 */
-
-
-.cake-shadow{
-
-
-fill:
-
-rgba(0,0,0,.3);
-
-
-
-}
-
-
-
-
-
-/* 粉色蛋糕主体 */
-
-
-.pink-body{
-
-
-fill:#ff9fc9;
-
-
-stroke:
-
-#ffd1e5;
-
-
-stroke-width:3;
-
-
-
-}
-
-
-
-
-
-/* 奶油夹层 */
-
-
-.cream-line{
-
-
-fill:none;
-
-
-
-stroke:
-
-#fff7fb;
-
-
-
-stroke-width:14;
-
-
-
-stroke-linecap:
-
-round;
-
-
-
-filter:
-
-drop-shadow(
-
-0 3px 5px
-
-rgba(255,255,255,.5)
-
-);
-
-
-
-}
-
-
-
-
-
-
-
-/* 顶层粉色奶油 */
-
-
-.pink-top{
-
-
-fill:
-
-#ffd4e6;
-
-
-
-stroke:
-
-white;
-
-
-
-stroke-width:3;
-
-
-
-}
-
-
-
-
-
-
-/* 奶油波纹 */
-
-
-.cream-wave{
-
-
-fill:none;
-
-
-
-stroke:white;
-
-
-
-stroke-width:10;
-
-
-
-stroke-linecap:round;
-
-
-
-}
-
-
-
-
-
-/* 草莓 */
-
-
-.berry{
-
-
-fill:
-
-#ff4778;
-
-
-
-stroke:
-
-#ffc1d3;
-
-
-
-stroke-width:3;
-
-
-
-filter:
-
-
-drop-shadow(
-
-0 5px 8px
-
-rgba(255,50,100,.6)
-
-);
-
-
-
-}
-
-
-
-
-/* 珍珠 */
-
-
-.pearl{
-
-
-fill:
-
-white;
-
-
-
-filter:
-
-
-drop-shadow(
-
-0 0 8px
-
-white
-
-);
-
-
-
-}
-
-
-
-
-
-/* 金色蜡烛 */
-
-
-.gold-candle{
-
-
-fill:
-
-#ffe38a;
-
-
-
-filter:
-
-
-drop-shadow(
-
-0 0 10px
-
-#ffe38a
-
-);
-
-
-
-}
-
-
-
-
-
-/* 粉色火焰 */
-
-
-.pink-fire{
-
-
-fill:
-
-#ff8fab;
-
-
-
-filter:
-
-
-drop-shadow(
-
-0 0 15px
-
-#ff6fa8
-
-);
-
-
-
-transform-origin:center;
-
-
-
-animation:
-
-fire 0.8s infinite alternate;
-
-
-
-}
-
-
-
-
-
-
-/* 蛋糕粉色光晕 */
-
-
-.pink-glow{
-
-
-position:absolute;
-
-
-
-width:280px;
-
-
-height:120px;
-
-
-
-bottom:-20px;
-
-
-
-
-background:
-
-rgba(255,100,180,.5);
-
-
-
-filter:
-
-blur(50px);
-
-
-
-z-index:-1;
-
-
-
-}
-
-
-
-
-
-
-
-
-/* ===============================
-   祝福玻璃卡片
-================================ */
-
-
-.love-card{
-
-
-width:330px;
-
-
-
-max-width:90%;
-
-
-
-padding:25px;
-
-
-
-border-radius:30px;
-
-
-
-background:
-
-
-rgba(255,255,255,.15);
-
-
-
-border:
-
-
-1px solid
-
-rgba(255,255,255,.3);
-
-
-
-backdrop-filter:
-
-blur(15px);
-
-
-
-box-shadow:
-
-
-0 10px 40px
-
-rgba(255,120,180,.35);
-
-
-
-line-height:2;
-
-
-
-font-size:16px;
-
-
-
-}
-
-
-
-
-#wish{
-
-
-animation:
-
-wishShow 1s;
-
-
-
-}
-
-
-
-
-
-
-/* ===============================
-   按钮
-================================ */
-
-
-button{
-
-
-margin-top:15px;
-
-
-
-padding:
-
-14px 38px;
-
-
-
-border:none;
-
-
-
-border-radius:50px;
-
-
-
-background:
-
-
-linear-gradient(
-
-135deg,
-
-#ff9bc8,
-
-#ff5f91
-
-);
-
-
-
-color:white;
-
-
-
-font-size:16px;
-
-
-
-box-shadow:
-
-
-0 0 25px
-
-rgba(255,100,170,.8);
-
-
-
-transition:.3s;
-
-
-
-}
-
-
-
-button:hover{
-
-
-transform:
-
-translateY(-5px)
-scale(1.05);
-
-
-
-}
-
-
-
-
-
-
-
-/* ===============================
-   动画
-================================ */
 
 
 @keyframes cakeFloat{
 
 
-0%,100%{
-
-transform:
-
-translateY(0);
-
-}
+    0%,100%{
 
 
-50%{
+        transform:
+
+        translateY(0);
+
+    }
 
 
-transform:
-
-translateY(-18px);
+    50%{
 
 
+        transform:
 
-}
+        translateY(-15px);
 
-
-}
-
-
-
-
-
-@keyframes fire{
-
-
-from{
-
-
-transform:
-
-scale(1)
-rotate(-5deg);
-
-
-
-}
-
-
-to{
-
-
-transform:
-
-scale(1.25)
-rotate(5deg);
-
-
-
-}
-
+    }
 
 
 }
@@ -921,76 +571,62 @@ rotate(5deg);
 
 
 
-@keyframes titleShow{
+
+#flame{
 
 
-from{
+    position:absolute;
 
 
-opacity:0;
+    top:-30px;
 
 
-transform:
-
-translateY(-40px);
+    left:50%;
 
 
-
-}
-
-
-
-to{
-
-
-opacity:1;
-
-
-transform:
-
-translateY(0);
+    transform:translateX(-50%);
 
 
 
-}
+    font-size:35px;
+
+
+    animation:
+
+        flame 1s infinite alternate;
 
 
 }
 
 
 
-
-@keyframes wishShow{
-
-
-from{
+@keyframes flame{
 
 
-opacity:0;
+    from{
 
 
-transform:
+        transform:
 
-translateY(30px);
+        translateX(-50%)
 
-
-
-}
+        scale(.9);
 
 
-to{
+    }
 
 
-opacity:1;
+    to{
 
 
-transform:
+        transform:
 
-translateY(0);
+        translateX(-50%)
+
+        scale(1.15);
 
 
-
-}
+    }
 
 
 }
@@ -1000,19 +636,189 @@ translateY(0);
 
 
 
-/* ===============================
-   手机微信适配
-================================ */
+
+/* =========================
+   照片墙
+========================= */
 
 
-@media(max-width:500px){
+.photo-wall{
+
+
+    margin-top:40px;
+
+
+    display:flex;
+
+
+    flex-wrap:wrap;
+
+
+    justify-content:center;
+
+
+    gap:15px;
+
+
+}
 
 
 
-.title{
 
 
-font-size:38px;
+.photo{
+
+
+    width:120px;
+
+
+    height:150px;
+
+
+    background:white;
+
+
+    padding:8px;
+
+
+    transform:
+
+    rotate(
+
+    calc(
+
+    -8deg + 16deg * var(--r)
+
+    )
+
+    );
+
+
+}
+
+
+
+.photo img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+}
+
+
+
+
+
+/* =========================
+   回忆
+========================= */
+
+
+.memory p{
+
+
+    margin:25px;
+
+
+    font-size:22px;
+
+
+    opacity:.9;
+
+
+}
+
+
+
+
+
+/* =========================
+   告白
+========================= */
+
+
+.love p{
+
+
+    font-size:28px;
+
+
+    line-height:2;
+
+
+    animation:
+
+    loveText 2s ease forwards;
+
+
+}
+
+
+
+
+
+.love h1{
+
+
+    margin-top:40px;
+
+
+    color:#ffdae9;
+
+
+}
+
+
+
+
+
+@keyframes loveText{
+
+
+    from{
+
+        opacity:0;
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+    }
+
+
+}
+
+
+
+
+
+/* =========================
+   礼物盒
+========================= */
+
+
+.gift-box{
+
+
+    font-size:100px;
+
+
+    cursor:pointer;
+
+
+    animation:
+
+    giftMove 2s infinite;
 
 
 
@@ -1020,54 +826,114 @@ font-size:38px;
 
 
 
-.name{
+@keyframes giftMove{
 
 
-font-size:32px;
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
 
 
+    50%{
 
-}
+        transform:translateY(-20px);
 
-
-
-.pink-cake{
-
-
-width:260px;
-
-
-
-}
-
-
-
-.love-card{
-
-
-font-size:14px;
-
-
-
-padding:20px;
-
+    }
 
 
 }
 
 
 
-button{
 
 
-padding:
 
-12px 30px;
 
+/* =========================
+   最终祝福
+========================= */
+
+
+.final h1{
+
+
+    font-size:55px;
 
 
 }
 
+
+
+.final h2{
+
+
+    margin:20px;
+
+
+}
+
+
+
+
+.final .from{
+
+
+    margin-top:50px;
+
+
+    letter-spacing:5px;
+
+
+    color:#ffd6e8;
+
+
+}
+
+
+
+
+
+/* =========================
+   手机
+========================= */
+
+
+@media(max-width:768px){
+
+
+    h1{
+
+        font-size:40px;
+
+    }
+
+
+
+    .message{
+
+        font-size:16px;
+
+    }
+
+
+
+    .photo{
+
+        width:90px;
+
+        height:120px;
+
+    }
+
+
+
+    .love p{
+
+        font-size:22px;
+
+    }
 
 
 }
