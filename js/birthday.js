@@ -1,215 +1,106 @@
 /*
-================================
- 袁雨婷生日祝福网页
- birthday.js 最终版
-================================
+=================================================
+ Happy Birthday · Story Animation
+ birthday.js
+=================================================
 */
 
 
-
-// 页面加载完成
-
-window.onload=function(){
-
-
-    createStars();
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
 
 
-    typeWish();
+        initStory();
+
+        initStars();
+
+        initMusic();
+
+        initCake();
+
+        initGift();
 
 
-    initButtons();
-
-
-    initMusic();
-
-
-};
-
-
-
-
-
-
-
-/*
-================================
- 星空粒子动画
-================================
-*/
-
-
-function createStars(){
-
-
-const canvas=document.getElementById(
-"birthdayStars"
-);
-
-
-
-if(!canvas) return;
-
-
-
-const ctx=canvas.getContext("2d");
-
-
-
-let width=
-canvas.width=
-window.innerWidth;
-
-
-
-let height=
-canvas.height=
-window.innerHeight;
-
-
-
-let stars=[];
-
-
-
-// 创建星星
-
-for(let i=0;i<150;i++){
-
-
-stars.push({
-
-x:Math.random()*width,
-
-y:Math.random()*height,
-
-size:
-Math.random()*2+0.5,
-
-
-speed:
-Math.random()*0.5+0.1,
-
-
-opacity:
-Math.random()
-
-
-});
-
-
-}
-
-
-
-
-
-function draw(){
-
-
-ctx.clearRect(
-0,
-0,
-width,
-height
+    }
 );
 
 
 
 
-stars.forEach(star=>{
+
+/* ================================================
+   八幕故事控制
+================================================ */
+
+
+function initStory(){
+
+
+    const scenes =
+        document.querySelectorAll(".scene");
+
+
+    const nextButtons =
+        document.querySelectorAll(".next-btn");
+
+
+    let current = 0;
 
 
 
-ctx.beginPath();
+    function showScene(index){
+
+
+        scenes.forEach(scene=>{
+
+            scene.classList.remove(
+                "active"
+            );
+
+        });
 
 
 
-ctx.fillStyle=
-`rgba(255,255,255,${star.opacity})`;
+        scenes[index].classList.add(
+            "active"
+        );
 
 
-
-ctx.arc(
-
-star.x,
-
-star.y,
-
-star.size,
-
-0,
-
-Math.PI*2
-
-);
-
-
-
-ctx.fill();
-
-
-
-
-
-star.y-=star.speed;
-
-
-
-
-
-// 星星移动到顶部重新出现
-
-
-if(star.y<0){
-
-
-star.y=height;
-
-
-star.x=Math.random()*width;
-
-
-}
+    }
 
 
 
 
-});
+    nextButtons.forEach(btn=>{
+
+
+        btn.addEventListener(
+            "click",
+            ()=>{
+
+
+                if(current < scenes.length-1){
+
+
+                    current++;
+
+
+                    showScene(current);
+
+
+                    createHearts();
+
+
+                }
 
 
 
-
-requestAnimationFrame(draw);
-
-
-
-}
+            }
+        );
 
 
-
-draw();
-
-
-
-
-
-window.onresize=function(){
-
-
-width=
-canvas.width=
-window.innerWidth;
-
-
-
-height=
-canvas.height=
-window.innerHeight;
-
-
-
-};
+    });
 
 
 
@@ -222,365 +113,688 @@ window.innerHeight;
 
 
 
-
-/*
-================================
- 生日祝福文字逐字出现
-================================
-*/
-
-
-function typeWish(){
-
-
-
-const wish=
-document.getElementById(
-"wish"
-);
-
-
-
-if(!wish)return;
-
-
-
-
-const text=
-`
-宝宝 生日快乐 ❤️
-
-认识你的那一天，
-成为了我生命中特别的日子。
-
-希望未来每一年生日，
-我都可以陪你一起度过。
-
-愿你永远开心，
-永远被温柔对待。
-
-想和你在一起一辈子哦 ❤️
-`;
-
-
-
-
-
-let index=0;
-
-
-
-function typing(){
-
-
-
-if(index<text.length){
-
-
-
-let char=text[index];
-
-
-
-if(char=="\n"){
-
-
-wish.innerHTML+="<br>";
-
-
-
-}else{
-
-
-wish.innerHTML+=char;
-
-
-
-}
-
-
-
-index++;
-
-
-
-setTimeout(
-typing,
-80
-);
-
-
-
-}
-
-
-
-}
-
-
-
-typing();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/*
-================================
- 按钮功能
-================================
-*/
-
-
-function initButtons(){
-
-
-
-// 愿望按钮
-
-
-const wishBtn=
-document.getElementById(
-"wishBtn"
-);
-
-
-
-if(wishBtn){
-
-
-
-wishBtn.onclick=function(){
-
-
-
-const wish=
-document.getElementById(
-"wish"
-);
-
-
-
-wish.innerHTML=
-`
-💗 我的生日愿望 💗
-<br><br>
-
-希望宝宝每天都开心。
-
-<br>
-
-希望未来的每一个生日，
-
-<br>
-
-我都能陪在你身边。
-
-<br><br>
-
-永远爱你 ❤️
-`;
-
-
-
-wish.style.animation=
-"wishShow 1s";
-
-
-
-createHeart();
-
-
-
-
-};
-
-
-
-}
-
-
-
-
-
-
-// 回忆按钮
-
-
-const nextBtn=
-document.getElementById(
-"nextBtn"
-);
-
-
-
-if(nextBtn){
-
-
-
-nextBtn.onclick=function(){
-
-
-
-window.location.href=
-"memory.html";
-
-
-
-};
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/*
-================================
- 点击产生爱心
-================================
-*/
-
-
-function createHeart(){
-
-
-
-for(let i=0;i<20;i++){
-
-
-
-let heart=
-document.createElement(
-"div"
-);
-
-
-
-heart.innerHTML="❤️";
-
-
-
-heart.style.position=
-"fixed";
-
-
-
-heart.style.left=
-Math.random()*100+"%";
-
-
-
-heart.style.bottom=
-"20px";
-
-
-
-heart.style.fontSize=
-Math.random()*20+15+"px";
-
-
-
-heart.style.animation=
-"heartFly 3s linear";
-
-
-
-document.body.appendChild(
-heart
-);
-
-
-
-
-setTimeout(()=>{
-
-
-heart.remove();
-
-
-
-},3000);
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-/*
-================================
- 音乐播放
-================================
-*/
+/* ================================================
+   音乐
+================================================ */
 
 
 function initMusic(){
 
 
-
-const music=
-document.getElementById(
-"birthdayMusic"
-);
-
+    const music =
+        document.getElementById(
+            "birthdayMusic"
+        );
 
 
-if(!music)return;
+    if(!music)return;
 
 
 
-music.volume=0.5;
+    document.addEventListener(
+        "click",
+        ()=>{
 
 
+            music.play()
+            .catch(()=>{});
 
 
-// 微信需要用户点击
+        },
 
-document.addEventListener(
-"click",
-function(){
+        {
+            once:true
+        }
 
+    );
 
-music.play()
-.catch(()=>{});
-
-
-},
-{
-
-once:true
 
 }
 
-);
+
+
+
+
+
+
+
+
+/* ================================================
+   星空粒子
+================================================ */
+
+
+function initStars(){
+
+
+    const canvas =
+        document.getElementById(
+            "birthdayStars"
+        );
+
+
+    if(!canvas)return;
+
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+
+    let stars=[];
+
+
+
+    function resize(){
+
+
+        canvas.width =
+            window.innerWidth;
+
+
+        canvas.height =
+            window.innerHeight;
+
+
+
+        stars=[];
+
+
+
+        for(
+            let i=0;
+            i<180;
+            i++
+        ){
+
+
+            stars.push({
+
+                x:
+                Math.random()
+                *
+                canvas.width,
+
+
+                y:
+                Math.random()
+                *
+                canvas.height,
+
+
+                size:
+                Math.random()*2,
+
+
+                speed:
+                Math.random()
+                *.3+.1,
+
+
+                alpha:
+                Math.random()
+
+
+            });
+
+
+        }
+
+
+    }
+
+
+
+
+    resize();
+
+
+
+    window.addEventListener(
+        "resize",
+        resize
+    );
+
+
+
+
+
+    function draw(){
+
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+
+
+        stars.forEach(star=>{
+
+
+            star.alpha +=
+                star.speed*.01;
+
+
+
+            if(star.alpha>1){
+
+                star.alpha=0;
+
+            }
+
+
+
+            ctx.beginPath();
+
+
+
+            ctx.arc(
+
+                star.x,
+
+                star.y,
+
+                star.size,
+
+                0,
+
+                Math.PI*2
+
+            );
+
+
+
+            ctx.fillStyle =
+            `
+            rgba(
+            255,
+            255,
+            255,
+            ${star.alpha}
+            )
+            `;
+
+
+
+            ctx.fill();
+
+
+
+        });
+
+
+
+        requestAnimationFrame(
+            draw
+        );
+
+    }
+
+
+
+    draw();
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================================
+   蛋糕蜡烛
+================================================ */
+
+
+function initCake(){
+
+
+
+    const btn =
+        document.getElementById(
+            "lightCake"
+        );
+
+
+
+    const flame =
+        document.getElementById(
+            "flame"
+        );
+
+
+
+    if(!btn)return;
+
+
+
+    let light=false;
+
+
+
+    btn.onclick=()=>{
+
+
+        light=!light;
+
+
+
+        if(light){
+
+
+            flame.innerHTML="🔥";
+
+
+            flame.style
+            .filter=
+            "drop-shadow(0 0 20px orange)";
+
+
+
+            btn.innerHTML=
+            "吹灭蜡烛";
+
+
+            createFireworks();
+
+
+        }
+
+        else{
+
+
+            flame.innerHTML="🕯️";
+
+
+            btn.innerHTML=
+            "点亮蜡烛";
+
+
+        }
+
+
+
+    };
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================
+   礼物盒
+================================================ */
+
+
+function initGift(){
+
+
+    const gift =
+        document.getElementById(
+            "giftBox"
+        );
+
+
+    const open =
+        document.getElementById(
+            "openGift"
+        );
+
+
+    if(!open)return;
+
+
+
+    open.onclick=()=>{
+
+
+        gift.style.transform=
+            "scale(1.5) rotate(20deg)";
+
+
+
+        gift.innerHTML=
+            "💖";
+
+
+
+        createLoveRain();
+
+
+
+    };
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================================
+   爱心
+================================================ */
+
+
+function createHearts(){
+
+
+
+    for(
+        let i=0;
+        i<8;
+        i++
+    ){
+
+
+        const heart =
+            document.createElement(
+                "div"
+            );
+
+
+        heart.innerHTML="❤️";
+
+
+
+        heart.style.position=
+            "fixed";
+
+
+
+        heart.style.left=
+            Math.random()*100+
+            "%";
+
+
+
+        heart.style.bottom=
+            "0";
+
+
+
+        heart.style.fontSize=
+            "20px";
+
+
+
+        heart.style.zIndex=
+            "999";
+
+
+
+        heart.style.transition=
+            "3s ease";
+
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+
+        setTimeout(()=>{
+
+
+            heart.style.transform=
+            `
+            translateY(-90vh)
+            scale(2)
+            `;
+
+
+
+            heart.style.opacity=0;
+
+
+
+        },100);
+
+
+
+        setTimeout(()=>{
+
+
+            heart.remove();
+
+
+        },3000);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================================================
+   爱心雨
+================================================ */
+
+
+function createLoveRain(){
+
+
+
+    for(
+        let i=0;
+        i<40;
+        i++
+    ){
+
+
+        const love =
+            document.createElement(
+                "div"
+            );
+
+
+        love.innerHTML="💗";
+
+
+
+        love.style.position=
+        "fixed";
+
+
+
+        love.style.top="-20px";
+
+
+
+        love.style.left=
+        Math.random()*100+
+        "%";
+
+
+
+        love.style.fontSize=
+        Math.random()*20+15+
+        "px";
+
+
+
+        love.style.transition=
+        "4s linear";
+
+
+
+        love.style.zIndex=
+        "9999";
+
+
+
+        document.body.appendChild(
+            love
+        );
+
+
+
+        setTimeout(()=>{
+
+
+            love.style.transform=
+            `
+            translateY(100vh)
+            rotate(360deg)
+            `;
+
+
+
+        },100);
+
+
+
+        setTimeout(()=>{
+
+
+            love.remove();
+
+
+        },5000);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ================================================
+   烟花
+================================================ */
+
+
+function createFireworks(){
+
+
+    for(
+        let i=0;
+        i<20;
+        i++
+    ){
+
+
+        const spark =
+            document.createElement(
+                "div"
+            );
+
+
+
+        spark.innerHTML="✨";
+
+
+
+        spark.style.position=
+            "fixed";
+
+
+
+        spark.style.left=
+            "50%";
+
+
+
+        spark.style.top=
+            "50%";
+
+
+
+        spark.style.fontSize=
+            "20px";
+
+
+
+        spark.style.transition=
+            "2s ease";
+
+
+
+        spark.style.zIndex=
+            "999";
+
+
+
+        document.body.appendChild(
+            spark
+        );
+
+
+
+        setTimeout(()=>{
+
+
+            spark.style.transform=
+            `
+            translate(
+            ${Math.random()*400-200}px,
+            ${Math.random()*400-200}px
+            )
+            scale(0)
+            `;
+
+
+
+            spark.style.opacity=0;
+
+
+
+        },100);
+
+
+
+        setTimeout(()=>{
+
+
+            spark.remove();
+
+
+        },2200);
+
+
+
+    }
 
 
 
