@@ -1,484 +1,345 @@
 /*
-====================================
- Happy Birthday · 袁雨婷 ❤️
-
- main.js
-
- 首页交互逻辑
-
-====================================
+=========================================================
+Happy Birthday · 首页脚本
+File: js/main.js
+=========================================================
 */
 
+window.addEventListener("load", () => {
 
-// ================================
-// 1. 星空粒子背景
-// ================================
+    initStars();
 
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
+    createFloatingStars();
 
+    createRandomMeteors();
 
-let width;
-let height;
+    setupOpenButton();
 
+});
 
-function resize(){
+/* =====================================================
+   Canvas 星空
+===================================================== */
 
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+function initStars() {
 
-}
+    const canvas = document.getElementById("stars");
 
-resize();
+    if (!canvas) return;
 
+    const ctx = canvas.getContext("2d");
 
-window.addEventListener(
-    "resize",
-    resize
-);
+    let width;
+    let height;
 
+    let stars = [];
 
+    function resize() {
 
-let stars = [];
+        width = canvas.width = window.innerWidth;
 
+        height = canvas.height = window.innerHeight;
 
-// 创建星星
+        stars = [];
 
-for(let i = 0; i < 220; i++){
+        const count = Math.floor(width / 8);
 
-    stars.push({
+        for (let i = 0; i < count; i++) {
 
-        x:Math.random()*width,
+            stars.push({
 
-        y:Math.random()*height,
+                x: Math.random() * width,
 
-        radius:
-        Math.random()*1.8,
+                y: Math.random() * height,
 
-        speed:
-        Math.random()*0.35+0.05,
+                r: Math.random() * 2 + 0.3,
 
-        alpha:
-        Math.random()
+                alpha: Math.random(),
 
-    });
+                speed: Math.random() * 0.15 + 0.02
 
-}
-
-
-
-// 绘制星空
-
-function drawStars(){
-
-
-    ctx.clearRect(
-        0,
-        0,
-        width,
-        height
-    );
-
-
-    stars.forEach(star=>{
-
-
-        ctx.beginPath();
-
-
-        ctx.arc(
-            star.x,
-            star.y,
-            star.radius,
-            0,
-            Math.PI*2
-        );
-
-
-        ctx.fillStyle=
-        `rgba(255,255,255,${star.alpha})`;
-
-
-        ctx.fill();
-
-
-
-        star.y += star.speed;
-
-
-
-        // 到底重新出现
-
-        if(star.y > height){
-
-            star.y=0;
-
-            star.x=
-            Math.random()*width;
+            });
 
         }
-
-
-
-        // 闪烁
-
-        star.alpha +=
-        (Math.random()-0.5)*0.05;
-
-
-        if(star.alpha<0.2)
-            star.alpha=0.2;
-
-
-        if(star.alpha>1)
-            star.alpha=1;
-
-
-
-    });
-
-
-    requestAnimationFrame(
-        drawStars
-    );
-
-}
-
-
-drawStars();
-
-
-
-
-
-// ================================
-// 2. 流星效果
-// ================================
-
-
-let meteors=[];
-
-
-
-function createMeteor(){
-
-
-    meteors.push({
-
-        x:
-        Math.random()*width,
-
-        y:-50,
-
-        length:
-        Math.random()*100+80,
-
-        speed:
-        Math.random()*8+8
-
-    });
-
-
-}
-
-
-
-setInterval(
-    createMeteor,
-    2500
-);
-
-
-
-function drawMeteor(){
-
-
-    meteors.forEach(
-    (m,index)=>{
-
-
-        ctx.beginPath();
-
-
-        ctx.moveTo(
-            m.x,
-            m.y
-        );
-
-
-        ctx.lineTo(
-            m.x-m.length,
-            m.y+m.length
-        );
-
-
-        ctx.strokeStyle=
-        "rgba(255,255,255,.7)";
-
-
-        ctx.lineWidth=2;
-
-
-        ctx.stroke();
-
-
-
-        m.x-=m.speed;
-
-        m.y+=m.speed;
-
-
-
-        if(m.y>height){
-
-            meteors.splice(index,1);
-
-        }
-
-
-    });
-
-
-
-    requestAnimationFrame(
-        drawMeteor
-    );
-
-}
-
-
-drawMeteor();
-
-
-
-
-// ================================
-// 3. 打字机效果
-// ================================
-
-
-const text =
-
-"今天，是属于你的日子。\\n愿所有美好都围绕着你。";
-
-
-const typing =
-document.getElementById(
-    "typing"
-);
-
-
-let index=0;
-
-
-
-function typingEffect(){
-
-
-    if(index < text.length){
-
-
-        let char=text[index];
-
-
-        if(char==="\\n"){
-
-            typing.innerHTML+="<br>";
-
-        }
-        else{
-
-            typing.innerHTML+=char;
-
-        }
-
-
-        index++;
-
-
-        setTimeout(
-            typingEffect,
-            120
-        );
-
 
     }
 
+    resize();
 
-}
+    window.addEventListener("resize", resize);
 
+    function draw() {
 
+        ctx.clearRect(0, 0, width, height);
 
-setTimeout(
-    typingEffect,
-    1500
-);
+        stars.forEach(star => {
 
+            star.alpha += star.speed;
 
+            if (star.alpha >= 1 || star.alpha <= 0) {
 
-
-// ================================
-// 4. 点击开始故事
-// ================================
-
-
-const btn =
-document.getElementById(
-    "startBtn"
-);
-
-
-const music =
-document.getElementById(
-    "bgm"
-);
-
-
-
-btn.addEventListener(
-"click",
-()=>{
-
-
-    // 播放音乐
-
-    music.play()
-    .catch(()=>{
-
-        console.log(
-        "等待用户操作"
-        );
-
-    });
-
-
-
-    // 页面淡出
-
-    document.body.style.transition=
-    "2s";
-
-
-    document.body.style.opacity=
-    "0";
-
-
-
-    setTimeout(()=>{
-
-
-        /*
-        
-        下一阶段会跳转：
-
-        birthday.html
-
-        这里提前预留
-
-        */
-
-
-        console.log(
-        "进入生日故事页面"
-        );
-
-
-    },2000);
-
-
-
-});
-
-
-
-
-
-// ================================
-// 5. 点击产生爱心
-// ================================
-
-
-document.addEventListener(
-"click",
-function(e){
-
-
-    let heart =
-    document.createElement(
-        "div"
-    );
-
-
-    heart.innerHTML="❤️";
-
-
-    heart.style.position=
-    "fixed";
-
-
-    heart.style.left=
-    e.clientX+"px";
-
-
-    heart.style.top=
-    e.clientY+"px";
-
-
-    heart.style.fontSize=
-    Math.random()*20+20+"px";
-
-
-    heart.style.pointerEvents=
-    "none";
-
-
-    heart.style.zIndex=999;
-
-
-
-    document.body.appendChild(
-        heart
-    );
-
-
-
-    heart.animate(
-
-        [
-
-            {
-                transform:
-                "translateY(0)",
-                opacity:1
-            },
-
-            {
-
-                transform:
-                "translateY(-120px)",
-
-                opacity:0
+                star.speed *= -1;
 
             }
 
-        ],
+            ctx.beginPath();
 
-        {
+            ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
 
-            duration:1200
+            ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
 
-        }
+            ctx.fill();
 
-    );
+        });
 
+        requestAnimationFrame(draw);
 
+    }
 
-    setTimeout(()=>{
+    draw();
+
+}
+
+/* =====================================================
+   漂浮星点
+===================================================== */
+
+function createFloatingStars() {
+
+    const amount = 60;
+
+    for (let i = 0; i < amount; i++) {
+
+        const star = document.createElement("div");
+
+        star.className = "star";
+
+        const size = Math.random() * 3 + 1;
+
+        star.style.width = size + "px";
+
+        star.style.height = size + "px";
+
+        star.style.left = Math.random() * 100 + "%";
+
+        star.style.top = Math.random() * 100 + "%";
+
+        star.style.animationDuration =
+            (Math.random() * 4 + 2) + "s";
+
+        document.body.appendChild(star);
+
+    }
+
+}
+
+/* =====================================================
+   随机流星
+===================================================== */
+
+function createRandomMeteors() {
+
+    setInterval(() => {
+
+        const meteor = document.createElement("div");
+
+        meteor.className = "meteor";
+
+        meteor.style.top =
+            Math.random() * 40 + "%";
+
+        meteor.style.left = "-250px";
+
+        meteor.style.animation =
+            "meteorMove 3s linear forwards";
+
+        document.body.appendChild(meteor);
+
+        setTimeout(() => {
+
+            meteor.remove();
+
+        }, 3000);
+
+    }, 2500);
+
+}
+
+/* =====================================================
+   爱心特效
+===================================================== */
+
+document.addEventListener("click", (e) => {
+
+    const heart = document.createElement("div");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.position = "fixed";
+
+    heart.style.left = e.clientX + "px";
+
+    heart.style.top = e.clientY + "px";
+
+    heart.style.pointerEvents = "none";
+
+    heart.style.fontSize = "20px";
+
+    heart.style.zIndex = "9999";
+
+    heart.style.transition = "1.2s ease";
+
+    document.body.appendChild(heart);
+
+    requestAnimationFrame(() => {
+
+        heart.style.transform =
+            `translateY(-80px) scale(1.8)`;
+
+        heart.style.opacity = "0";
+
+    });
+
+    setTimeout(() => {
 
         heart.remove();
 
-    },1200);
-
-
+    }, 1200);
 
 });
+
+/* =====================================================
+   开启礼物按钮
+===================================================== */
+
+function setupOpenButton() {
+
+    const button = document.getElementById("openBtn");
+
+    const fade = document.getElementById("fade");
+
+    const music = document.getElementById("bgm");
+
+    if (!button) return;
+
+    button.addEventListener("click", async () => {
+
+        button.disabled = true;
+
+        button.innerHTML =
+            "✨ 正在开启礼物... ✨";
+
+        /* 播放音乐 */
+
+        try {
+
+            await music.play();
+
+        } catch (err) {
+
+            console.log("音乐等待用户授权");
+
+        }
+
+        /* 镜头推进 */
+
+        document.body.animate(
+
+            [
+                {
+                    transform: "scale(1)"
+                },
+                {
+                    transform: "scale(1.12)"
+                }
+            ],
+
+            {
+                duration: 2200,
+                easing: "ease-in-out",
+                fill: "forwards"
+            }
+
+        );
+
+        /* 标题淡出 */
+
+        const content =
+            document.querySelector(".content");
+
+        if (content) {
+
+            content.animate(
+
+                [
+                    {
+                        opacity: 1
+                    },
+                    {
+                        opacity: 0
+                    }
+                ],
+
+                {
+                    duration: 1800,
+                    fill: "forwards"
+                }
+
+            );
+
+        }
+
+        /* 转场 */
+
+        setTimeout(() => {
+
+            fade.classList.add("show");
+
+        }, 1200);
+
+        /* 跳转 */
+
+        setTimeout(() => {
+
+            window.location.href =
+                "birthday.html";
+
+        }, 2600);
+
+    });
+
+}
+
+/* =====================================================
+   自动唤醒音频（移动端）
+===================================================== */
+
+function unlockAudio() {
+
+    const music = document.getElementById("bgm");
+
+    if (!music) return;
+
+    music.play()
+        .then(() => {
+
+            music.pause();
+
+            music.currentTime = 0;
+
+        })
+        .catch(() => { });
+
+}
+
+document.addEventListener(
+    "touchstart",
+    unlockAudio,
+    { once: true }
+);
+
+document.addEventListener(
+    "click",
+    unlockAudio,
+    { once: true }
+);
