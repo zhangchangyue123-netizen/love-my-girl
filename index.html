@@ -2,50 +2,86 @@
 <html lang="zh-CN">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>给宝宝的生日祝福</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <!-- 首页CSS -->
+    <title>Happy Birthday · 宝宝 ❤️</title>
+
+    <meta name="theme-color" content="#000000">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-    <!-- 首页内容 -->
-    <div class="container">
+    <!-- 星空 -->
+    <canvas id="stars"></canvas>
 
-        <h1>
-            我的宝宝
-        </h1>
+    <!-- 星光 -->
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
 
-        <p class="subtitle">
-            愿你的每一天都像今天一样闪闪发光
-        </p>
+    <!-- 流星 -->
+    <div class="meteor meteor1"></div>
+    <div class="meteor meteor2"></div>
+    <div class="meteor meteor3"></div>
 
+    <!-- 主体 -->
+    <main id="intro">
 
-        <!-- 跳转生日页面按钮 -->
-        <a href="birthday.html" class="start-btn">
-            <button>
-                打开我的祝福 ❤️
+        <div class="content">
+
+            <p class="small">
+                To My Baby
+            </p>
+
+            <h1 class="title">
+                有一份礼物
+            </h1>
+
+            <h2 class="subtitle">
+                正在等待它真正的主人
+            </h2>
+
+            <div class="line"></div>
+
+            <p class="tip">
+
+                请找一个安静的地方，
+
+                戴上耳机，
+
+                慢慢打开它。
+
+            </p>
+
+            <button id="openBtn">
+
+                ✨ 开启礼物 ✨
+
             </button>
-        </a>
 
+        </div>
 
-    </div>
+    </main>
 
+    <!-- 开场渐变 -->
+    <div id="fade"></div>
 
     <!-- 背景音乐 -->
-    <audio id="bgMusic" autoplay loop>
-        <source src="music/happy-birthday.mp3" type="audio/mpeg">
+    <audio id="bgm" loop preload="auto">
+        <source src="assets/music/happy-birthday.mp3" type="audio/mpeg">
     </audio>
 
-
-    <!-- 首页JS -->
     <script src="js/main.js"></script>
-
 
 </body>
 
