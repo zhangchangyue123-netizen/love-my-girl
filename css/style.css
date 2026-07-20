@@ -1,52 +1,38 @@
 /* =====================================================
-   Happy Birthday 首页
+   Happy Birthday 首页样式
    Romantic Movie Style
-   ===================================================== */
+===================================================== */
 
 
 /* =========================
-   基础设置
+   基础
 ========================= */
 
 *{
-
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
-
 }
 
 
 html,
 body{
 
-
     width:100%;
-
     height:100%;
-
 
     overflow:hidden;
 
-
-    background:#05050a;
-
+    background:#020207;
 
     color:white;
 
-
     font-family:
-
         "PingFang SC",
-
         "Microsoft YaHei",
-
         sans-serif;
-
-
 }
+
 
 
 /* =========================
@@ -56,81 +42,57 @@ body{
 
 #stars{
 
-
     position:fixed;
-
 
     inset:0;
 
-
     width:100%;
-
 
     height:100%;
 
-
     z-index:1;
-
 
 }
 
 
 
 /* =========================
-   星空背景渐变
+   背景渐变
 ========================= */
 
 
 body::before{
 
-
     content:"";
-
 
     position:fixed;
 
-
     inset:0;
-
 
     z-index:0;
 
 
     background:
 
-
     radial-gradient(
-
         circle at 20% 20%,
-
-        rgba(255,182,193,.15),
-
-        transparent 35%
-
+        rgba(255,180,210,.18),
+        transparent 40%
     ),
 
 
     radial-gradient(
-
         circle at 80% 80%,
-
-        rgba(150,120,255,.15),
-
-        transparent 40%
-
+        rgba(130,110,255,.15),
+        transparent 45%
     ),
 
 
     linear-gradient(
-
         180deg,
-
         #020207,
-
         #090914
-
     );
-
 
 }
 
@@ -143,24 +105,16 @@ body::before{
 
 .glow{
 
-
     position:fixed;
-
 
     border-radius:50%;
 
-
     filter:blur(120px);
-
 
     z-index:0;
 
-
     animation:
-
         glowMove 8s infinite ease-in-out;
-
-
 
 }
 
@@ -168,22 +122,15 @@ body::before{
 
 .glow1{
 
+    width:420px;
 
-    width:400px;
-
-
-    height:400px;
-
+    height:420px;
 
     background:#ff9fc9;
 
+    top:-160px;
 
-    top:-150px;
-
-
-    left:-100px;
-
-
+    left:-120px;
 
 }
 
@@ -191,27 +138,19 @@ body::before{
 
 .glow2{
 
+    width:360px;
 
-    width:350px;
+    height:360px;
 
+    background:#8d7cff;
 
-    height:350px;
-
-
-    background:#8c7cff;
-
-
-    right:-100px;
-
+    right:-120px;
 
     bottom:-120px;
 
-
     animation-delay:3s;
 
-
 }
-
 
 
 
@@ -220,27 +159,20 @@ body::before{
 
     0%,100%{
 
-
         transform:scale(1);
 
-
-        opacity:.18;
-
+        opacity:.2;
 
     }
 
 
     50%{
 
-
         transform:scale(1.25);
 
-
-        opacity:.35;
-
+        opacity:.38;
 
     }
-
 
 }
 
@@ -249,37 +181,29 @@ body::before{
 
 
 /* =========================
-   主内容
+   主区域
 ========================= */
 
 
 #intro{
 
-
     position:relative;
-
 
     z-index:10;
 
-
     width:100%;
-
 
     height:100%;
 
 
     display:flex;
 
-
     justify-content:center;
-
 
     align-items:center;
 
 
     padding:30px;
-
-
 
 }
 
@@ -287,20 +211,18 @@ body::before{
 
 .content{
 
-
     width:min(90%,600px);
 
-
     text-align:center;
-
 
 }
 
 
 
 
+
 /* =========================
-   字幕动画
+   字幕出现动画
 ========================= */
 
 
@@ -311,15 +233,12 @@ body::before{
 
 
     transform:
-
         translateY(35px);
 
 
 
     animation:
-
         textShow 1.5s ease forwards;
-
 
 
 }
@@ -335,28 +254,28 @@ body::before{
 
 .fade-item:nth-child(2){
 
-    animation-delay:1.5s;
+    animation-delay:1.4s;
 
 }
 
 
 .fade-item:nth-child(3){
 
-    animation-delay:2.5s;
+    animation-delay:2.3s;
 
 }
 
 
 .fade-item:nth-child(4){
 
-    animation-delay:3.5s;
+    animation-delay:3.2s;
 
 }
 
 
 .fade-item:nth-child(5){
 
-    animation-delay:4.5s;
+    animation-delay:4.1s;
 
 }
 
@@ -368,21 +287,15 @@ body::before{
 
     to{
 
-
         opacity:1;
 
 
         transform:
-
             translateY(0);
-
 
     }
 
-
 }
-
-
 
 
 
@@ -393,26 +306,17 @@ body::before{
 
 .small{
 
-
     font-size:15px;
-
 
     letter-spacing:8px;
 
-
     color:
-
     rgba(255,255,255,.65);
 
 
     margin-bottom:35px;
 
-
-    text-transform:uppercase;
-
-
 }
-
 
 
 
@@ -426,19 +330,14 @@ body::before{
 
     font-family:
 
-
         "STKaiti",
-
         "KaiTi",
-
         "FangSong",
-
         serif;
 
 
 
     font-size:
-
 
         clamp(34px,6vw,54px);
 
@@ -463,14 +362,10 @@ body::before{
     text-shadow:
 
 
-
         0 0 15px rgba(255,255,255,.25),
 
 
-
-        0 0 35px rgba(255,182,193,.25);
-
-
+        0 0 40px rgba(255,182,193,.3);
 
 }
 
@@ -478,7 +373,7 @@ body::before{
 
 
 /* =========================
-   小幸运文字
+   小幸运
 ========================= */
 
 
@@ -488,20 +383,15 @@ body::before{
     margin-top:15px;
 
 
-
     font-family:
 
-
         "PingFang SC",
-
         "Microsoft YaHei",
-
         sans-serif;
 
 
 
     font-size:
-
 
         clamp(20px,4vw,30px);
 
@@ -522,9 +412,7 @@ body::before{
     color:#ffeaf3;
 
 
-
 }
-
 
 
 
@@ -543,8 +431,7 @@ body::before{
     height:2px;
 
 
-    margin:38px auto;
-
+    margin:35px auto;
 
 
     background:
@@ -555,14 +442,14 @@ body::before{
 
         transparent,
 
-        #ffd4e7,
+        #ffd6e8,
 
         transparent
 
     );
 
-
 }
+
 
 
 
@@ -577,17 +464,10 @@ body::before{
     font-size:16px;
 
 
-
     line-height:2;
 
 
-
-    font-weight:300;
-
-
-
     color:
-
 
     rgba(255,255,255,.75);
 
@@ -596,8 +476,8 @@ body::before{
     margin-bottom:45px;
 
 
-
 }
+
 
 
 
@@ -628,7 +508,6 @@ body::before{
 
 
     background:
-
 
         rgba(255,255,255,.12);
 
@@ -662,16 +541,11 @@ body::before{
 
     box-shadow:
 
-
-
         0 10px 40px
 
         rgba(255,182,193,.25);
 
-
-
 }
-
 
 
 
@@ -688,38 +562,17 @@ body::before{
 
     background:
 
-
         rgba(255,182,193,.25);
 
 
 
-    box-shadow:
-
-
-        0 15px 50px
-
-        rgba(255,182,193,.4);
-
-
-
 }
 
-
-
-
-
-#openBtn:active{
-
-
-    transform:scale(.95);
-
-
-}
 
 
 
 /* =========================
-   流星
+   动态流星
 ========================= */
 
 
@@ -729,9 +582,7 @@ body::before{
     position:fixed;
 
 
-
-    width:180px;
-
+    width:220px;
 
 
     height:2px;
@@ -747,7 +598,7 @@ body::before{
 
         transparent,
 
-        white
+        rgba(255,255,255,.95)
 
     );
 
@@ -757,50 +608,53 @@ body::before{
 
 
 
-    z-index:2;
+    z-index:5;
 
 
-
-}
-
-
-
-.meteor1{
-
-
-    top:15%;
-
-
-    left:-200px;
-
-
-    animation:
-
-        meteor 7s infinite;
-
-
+    pointer-events:none;
 
 }
 
 
 
 
-.meteor2{
+.meteor::after{
 
 
-    top:45%;
+    content:"";
 
 
-    left:-300px;
+    position:absolute;
 
 
-    animation:
-
-        meteor 9s infinite;
+    right:0;
 
 
-    animation-delay:3s;
+    top:-2px;
 
+
+
+    width:6px;
+
+
+    height:6px;
+
+
+    border-radius:50%;
+
+
+
+    background:white;
+
+
+
+    box-shadow:
+
+
+        0 0 15px white,
+
+
+        0 0 30px #ffd6ec;
 
 
 }
@@ -808,16 +662,18 @@ body::before{
 
 
 
-@keyframes meteor{
+@keyframes meteorMove{
 
 
     0%{
 
+
         transform:
 
-        translate(0,0)
+        translate(-20vw,-20vh)
 
         rotate(-35deg);
+
 
 
         opacity:0;
@@ -826,8 +682,7 @@ body::before{
     }
 
 
-
-    10%{
+    15%{
 
 
         opacity:1;
@@ -842,7 +697,8 @@ body::before{
 
         transform:
 
-        translate(150vw,80vh)
+
+        translate(130vw,100vh)
 
         rotate(-35deg);
 
@@ -860,7 +716,7 @@ body::before{
 
 
 /* =========================
-   转场黑幕
+   转场
 ========================= */
 
 
@@ -887,9 +743,8 @@ body::before{
 
     z-index:999;
 
-
-
 }
+
 
 
 #fade.show{
@@ -902,26 +757,13 @@ body::before{
 
 
 
+
 /* =========================
    手机适配
 ========================= */
 
 
 @media(max-width:768px){
-
-
-
-    .small{
-
-
-        font-size:13px;
-
-
-        letter-spacing:6px;
-
-
-    }
-
 
 
     .title{
@@ -961,7 +803,6 @@ body::before{
 
 
     }
-
 
 
 }
