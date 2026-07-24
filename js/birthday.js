@@ -1,630 +1,401 @@
 /*
-=================================================
- Happy Birthday Story
- Fixed Version
-=================================================
+====================================================
+ Birthday Gift
+ birthday.js
+ Final Architecture - Part 1
+====================================================
 */
 
+/* ============================================
+   DOM
+============================================ */
 
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
+const scenes = [...document.querySelectorAll(".scene")];
+const nextButtons = document.querySelectorAll(".next-btn");
 
+const music = document.getElementById("birthdayMusic");
 
-    initStory();
-
-    initStars();
-
-    initMusic();
-
-    initCake();
-
-    initGift();
+const canvas = document.getElementById("fireworkCanvas");
+const ctx = canvas.getContext("2d");
 
 
-});
+/* ============================================
+   Canvas
+============================================ */
+
+function resizeCanvas(){
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
 
 
+/* ============================================
+   Global State
+============================================ */
+
+const state = {
+
+    currentScene:0,
+
+    musicStarted:false,
+
+    candleLight:false,
+
+    photoPlayed:false,
+
+    typingPlayed:false,
+
+    fireworkTimer:null,
+
+    heartTimer:null,
+
+    petalTimer:null
+
+};
 
 
+/* ============================================
+   Init
+============================================ */
 
-/* =====================================
-   八幕切换
-===================================== */
+init();
 
+function init(){
 
-function initStory(){
+    bindButtons();
 
+    bindMusic();
 
-    const scenes =
-    document.querySelectorAll(".scene");
+    showScene(0);
 
-
-    const buttons =
-    document.querySelectorAll(".next-btn");
-
-
-    let index=0;
+}
 
 
+/* ============================================
+   Scene Manager
+============================================ */
 
-    function changeScene(next){
+function showScene(index){
 
+    if(index<0 || index>=scenes.length){
 
-        if(next>=scenes.length){
-
-            return;
-
-        }
-
-
-
-        scenes[index]
-        .classList.remove("active");
-
-
-
-        setTimeout(()=>{
-
-
-            scenes[index]
-            .style.visibility="hidden";
-
-
-
-            index=next;
-
-
-
-            scenes[index]
-            .style.visibility="visible";
-
-
-            scenes[index]
-            .classList.add("active");
-
-
-
-        },200);
-
-
+        return;
 
     }
 
+    scenes.forEach(scene=>{
+
+        scene.classList.remove("active");
+
+    });
+
+    scenes[index].classList.add("active");
+
+    state.currentScene=index;
+
+    enterScene(index);
+
+}
 
 
 
-    buttons.forEach(btn=>{
+function nextScene(){
+
+    if(state.currentScene>=scenes.length-1){
+
+        return;
+
+    }
+
+    showScene(state.currentScene+1);
+
+}
 
 
-        btn.addEventListener(
-        "click",
-        ()=>{
+
+/* ============================================
+   Enter Scene
+============================================ */
+
+function enterScene(index){
+
+    clearSceneEffects();
+
+    switch(index){
+
+        case 0:
+
+            enterStarScene();
+
+            break;
+
+        case 1:
+
+            enterCakeScene();
+
+            break;
+
+        case 2:
+
+            enterCandleScene();
+
+            break;
+
+        case 3:
+
+            enterFireworkScene();
+
+            break;
+
+        case 4:
+
+            enterPhotoScene();
+
+            break;
+
+        case 5:
+
+            enterTimelineScene();
+
+            break;
+
+        case 6:
+
+            enterLoveScene();
+
+            break;
+
+        case 7:
+
+            enterEndScene();
+
+            break;
+
+    }
+
+}
 
 
-            changeScene(index+1);
+/* ============================================
+   Leave All Scene Effects
+============================================ */
+
+function clearSceneEffects(){
+
+    clearInterval(state.fireworkTimer);
+
+    clearInterval(state.heartTimer);
+
+    clearInterval(state.petalTimer);
+
+}
 
 
-            createHearts();
+/* ============================================
+   Buttons
+============================================ */
 
+function bindButtons(){
 
+    nextButtons.forEach(button=>{
+
+        button.addEventListener("click",()=>{
+
+            nextScene();
 
         });
 
-
     });
-
-
 
 }
 
 
-
-
-
-
-
-
-/* =====================================
-   音乐
-===================================== */
-
-
-function initMusic(){
-
-
-    const music=
-    document.getElementById(
-        "birthdayMusic"
-    );
-
-
-    if(!music)return;
-
-
-
-    document.body.addEventListener(
-    "click",
-    ()=>{
-
-
-        music.volume=0.5;
-
-
-        music.play()
-        .catch(()=>{});
-
-
-    },
-
-    {
-        once:true
-    });
-
-
-}
-
-
-
-
-
-
-
-
-/* =====================================
-   星空
-===================================== */
-
-
-function initStars(){
-
-
-    const canvas=
-    document.getElementById(
-        "birthdayStars"
-    );
-
-
-
-    if(!canvas)return;
-
-
-
-    const ctx=
-    canvas.getContext("2d");
-
-
-
-    let stars=[];
-
-
-
-    function resize(){
-
-
-        canvas.width=
-        window.innerWidth;
-
-
-        canvas.height=
-        window.innerHeight;
-
-
-
-        stars=[];
-
-
-
-        for(
-            let i=0;
-            i<220;
-            i++
-        ){
-
-
-            stars.push({
-
-                x:
-                Math.random()
-                *
-                canvas.width,
-
-
-                y:
-                Math.random()
-                *
-                canvas.height,
-
-
-                r:
-                Math.random()*1.8,
-
-
-                a:
-                Math.random()
-
-            });
-
-
-
-        }
-
-
-    }
-
-
-
-    resize();
-
-
+/* ============================================
+   Music
+============================================ */
+
+function bindMusic(){
 
     window.addEventListener(
-        "resize",
-        resize
-    );
 
+        "click",
 
+        ()=>{
 
-    function animate(){
+            if(state.musicStarted){
 
+                return;
 
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
+            }
 
+            state.musicStarted=true;
 
+            if(music){
 
-        stars.forEach(s=>{
+                music.volume=.45;
 
+                music.play().catch(()=>{});
 
-            s.a+=0.01;
+            }
 
+        },
 
+        {
 
-            if(s.a>1)
-                s.a=0;
-
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                s.x,
-                s.y,
-                s.r,
-                0,
-                Math.PI*2
-            );
-
-
-
-            ctx.fillStyle=
-            `
-            rgba(
-            255,
-            255,
-            255,
-            ${s.a}
-            )
-            `;
-
-
-
-            ctx.fill();
-
-
-
-        });
-
-
-
-        requestAnimationFrame(
-            animate
-        );
-
-
-    }
-
-
-
-    animate();
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-   蜡烛
-===================================== */
-
-
-function initCake(){
-
-
-    const btn=
-    document.getElementById(
-        "lightCake"
-    );
-
-
-    const flame=
-    document.getElementById(
-        "flame"
-    );
-
-
-
-    if(!btn)return;
-
-
-
-    let open=false;
-
-
-
-    btn.onclick=()=>{
-
-
-        open=!open;
-
-
-
-        if(open){
-
-
-            flame.innerHTML="🔥";
-
-
-            flame.classList.add(
-                "fire"
-            );
-
-
-            btn.innerHTML=
-            "吹灭蜡烛";
-
-
-
-            createFireworks();
-
-
-
-        }else{
-
-
-            flame.innerHTML="🕯️";
-
-
-            flame.classList.remove(
-                "fire"
-            );
-
-
-            btn.innerHTML=
-            "点亮蜡烛";
-
+            once:true
 
         }
 
-
-    };
-
-
-}
-
-
-
-
-
-
-
-
-/* =====================================
-   礼物
-===================================== */
-
-
-function initGift(){
-
-
-    const btn=
-    document.getElementById(
-        "openGift"
     );
 
+}
 
-    const gift=
-    document.getElementById(
-        "giftBox"
+
+/* ============================================
+   Scene 1
+============================================ */
+
+function enterStarScene(){
+
+    // Part2
+}
+
+
+/* ============================================
+   Scene 2
+============================================ */
+
+function enterCakeScene(){
+
+    // Part2
+}
+
+
+/* ============================================
+   Scene 3
+============================================ */
+
+function enterCandleScene(){
+
+    // Part2
+}
+
+
+/* ============================================
+   Scene 4
+============================================ */
+
+function enterFireworkScene(){
+
+    // Part2
+}
+
+
+/* ============================================
+   Scene 5
+============================================ */
+
+function enterPhotoScene(){
+
+    // Part3
+}
+
+
+/* ============================================
+   Scene 6
+============================================ */
+
+function enterTimelineScene(){
+
+    // Part3
+}
+
+
+/* ============================================
+   Scene 7
+============================================ */
+
+function enterLoveScene(){
+
+    // Part3
+}
+
+
+/* ============================================
+   Scene 8
+============================================ */
+
+function enterEndScene(){
+
+    // Part3
+}
+
+
+/* ============================================
+   Particle Manager
+============================================ */
+
+const fireworks=[];
+
+const hearts=[];
+
+const petals=[];
+
+
+/* ============================================
+   Render Loop
+============================================ */
+
+function render(){
+
+    ctx.clearRect(
+
+        0,
+
+        0,
+
+        canvas.width,
+
+        canvas.height
+
     );
 
+    updateFireworks();
 
-    if(!btn)return;
+    updateHearts();
 
+    updatePetals();
 
-
-    btn.onclick=()=>{
-
-
-        gift.innerHTML="💖";
-
-
-        gift.classList.add(
-            "open"
-        );
-
-
-        createLoveRain();
-
-
-
-    };
-
+    requestAnimationFrame(render);
 
 }
 
+render();
 
 
+/* ============================================
+   Placeholder
+============================================ */
 
+function updateFireworks(){}
 
+function updateHearts(){}
 
+function updatePetals(){}
 
 
-/* =====================================
-   爱心动画
-===================================== */
+/* ============================================
+   Utils
+============================================ */
 
+function random(min,max){
 
-function createHearts(){
-
-
-
-    for(
-    let i=0;i<10;i++
-    ){
-
-
-        const h=
-        document.createElement(
-            "div"
-        );
-
-
-        h.innerHTML="❤️";
-
-
-        h.className="heart";
-
-
-        h.style.left=
-        Math.random()*100+"%";
-
-
-        document.body.appendChild(h);
-
-
-
-        setTimeout(()=>{
-
-
-            h.remove();
-
-
-        },3000);
-
-
-
-    }
-
-
-}
-
-
-
-
-
-
-
-function createLoveRain(){
-
-
-    for(
-    let i=0;i<50;i++
-    ){
-
-
-        let h=
-        document.createElement(
-            "div"
-        );
-
-
-        h.innerHTML="💗";
-
-
-        h.className="rain-heart";
-
-
-        h.style.left=
-        Math.random()*100+"%";
-
-
-
-        document.body.appendChild(h);
-
-
-
-        setTimeout(()=>{
-
-
-            h.remove();
-
-
-        },5000);
-
-
-
-    }
-
-
-}
-
-
-
-
-
-
-
-function createFireworks(){
-
-
-    for(
-    let i=0;i<30;i++
-    ){
-
-
-        let star=
-        document.createElement(
-            "div"
-        );
-
-
-        star.innerHTML="✨";
-
-
-        star.className=
-        "firework";
-
-
-        document.body.appendChild(
-            star
-        );
-
-
-
-        setTimeout(()=>{
-
-
-            star.remove();
-
-
-        },2000);
-
-
-
-    }
-
-
+    return Math.random()*(max-min)+min;
 
 }
