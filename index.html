@@ -2,53 +2,62 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <title>To My Baby ❤️</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+    <title>Happy Birthday ❤️</title>
 
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
 
-    <!-- 星空 Canvas -->
+    <!-- 星空背景 -->
     <canvas id="starCanvas"></canvas>
 
-    <!-- 渐变遮罩 -->
+    <!-- 星空渐变 -->
     <div class="overlay"></div>
 
     <!-- 主内容 -->
     <main class="hero">
 
-        <div class="hero-content">
+        <div class="content">
 
-            <div class="small-title">
-                FOR MY LOVE
-            </div>
+            <p class="small-title">
+                A Letter For You
+            </p>
 
             <h1>
-                To My Baby
+                Dear Y.
             </h1>
 
+            <p class="birthday">
+                Happy Birthday
+            </p>
+
+            <div class="line"></div>
+
             <p class="subtitle">
-                今晚的星空，
+                今晚，
                 <br>
-                藏着属于你的一份小幸运。
+                所有闪烁的星光，
+                <br>
+                都在祝你生日快乐。
             </p>
 
             <button id="enterBtn">
 
-                <span>✨ 打开看看</span>
+                开启这份生日礼物
 
             </button>
+
+            <p class="tip">
+
+                轻轻点击，
+                故事开始了。
+
+            </p>
 
         </div>
 
@@ -56,6 +65,11 @@
 
     <!-- 流星容器 -->
     <div id="meteorContainer"></div>
+
+    <!-- 音乐（后续 main.js 控制播放） -->
+    <audio id="bgm" preload="auto" loop>
+        <source src="assets/music/happy-birthday.mp3" type="audio/mpeg">
+    </audio>
 
     <script src="js/main.js"></script>
 
