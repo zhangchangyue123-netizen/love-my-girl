@@ -2,77 +2,112 @@
 <html lang="zh-CN">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Happy Birthday ❤️</title>
 
+
+    <!-- 首页样式 -->
     <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 
+
 <body>
+
 
     <!-- 星空背景 -->
     <canvas id="starCanvas"></canvas>
 
-    <!-- 星空渐变 -->
-    <div class="overlay"></div>
 
-    <!-- 主内容 -->
+
+    <!-- 页面遮罩 -->
+    <div class="page-overlay"></div>
+
+
+
+    <!-- 首页内容 -->
+
     <main class="hero">
 
-        <div class="content">
 
-            <p class="small-title">
+        <section class="hero-content">
+
+
+            <p class="mini-title">
                 A Letter For You
             </p>
 
+
+
             <h1>
-                Dear Y.
+                Happy Birthday
             </h1>
 
-            <p class="birthday">
-                Happy Birthday
-            </p>
 
-            <div class="line"></div>
 
             <p class="subtitle">
-                今晚，
-                <br>
-                所有闪烁的星光，
-                <br>
+
+                今晚，<br>
+
+                所有闪烁的星光，<br>
+
                 都在祝你生日快乐。
+
             </p>
+
+
 
             <button id="enterBtn">
 
-                开启这份生日礼物
+                开启今晚的惊喜 ✨
 
             </button>
 
-            <p class="tip">
 
-                轻轻点击，
-                故事开始了。
+
+            <p class="hint">
+
+                轻轻点击，故事开始了。
 
             </p>
 
-        </div>
+
+        </section>
+
 
     </main>
 
-    <!-- 流星容器 -->
+
+
+
+    <!-- 流星动画容器 -->
+
     <div id="meteorContainer"></div>
 
-    <!-- 音乐（后续 main.js 控制播放） -->
-    <audio id="bgm" preload="auto" loop>
-        <source src="assets/music/happy-birthday.mp3" type="audio/mpeg">
+
+
+    <!-- 背景音乐 -->
+
+    <audio id="bgm" loop preload="auto">
+
+        <source src="assets/music/happy-birthday.mp3"
+                type="audio/mpeg">
+
     </audio>
+
+
+
+    <!-- 首页逻辑 -->
 
     <script src="js/main.js"></script>
 
+
 </body>
+
 
 </html>
