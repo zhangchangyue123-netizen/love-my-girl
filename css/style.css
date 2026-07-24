@@ -1,553 +1,662 @@
-/* ==========================================
-   Happy Birthday Website
-   style.css
-   ========================================== */
+/* ================================
+   Birthday Gift
+   Home Page Style
+   ================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ---------- 基础重置 ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        "Helvetica Neue",
+        sans-serif;
+
 }
 
-body{
-    width:100%;
-    min-height:100vh;
-    overflow:hidden;
-    font-family:'Poppins',sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+
+
+/* ---------- 页面背景 ---------- */
+
+
+body {
 
     background:
-    radial-gradient(circle at top,#ffeaf4 0%,#ffd9ec 25%,#ffc7e4 55%,#ffb5db 100%);
+        radial-gradient(
+            circle at top,
+            #241044 0%,
+            #12051f 35%,
+            #05030d 75%
+        );
+
+    color: white;
+
 }
 
-/* 星空背景Canvas */
 
-#stars{
-    position:fixed;
-    left:0;
+
+/* ---------- 星空 Canvas ---------- */
+
+
+#starCanvas {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+}
+
+
+
+/* ---------- 黑色渐变遮罩 ---------- */
+
+
+.page-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle,
+            transparent 20%,
+            rgba(0,0,0,0.55) 100%
+        );
+
+
+    z-index: 1;
+
+}
+
+
+
+/* ---------- 主区域 ---------- */
+
+
+.hero {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+
+    z-index: 2;
+
+
+}
+
+
+
+/* ---------- 内容 ---------- */
+
+
+.hero-content {
+
+
+    width: 90%;
+
+    max-width: 600px;
+
+
+    text-align: center;
+
+
+    animation:
+
+        pageShow 2s ease forwards;
+
+
+}
+
+
+
+/* ---------- 小标题 ---------- */
+
+
+.mini-title {
+
+
+    font-size: 14px;
+
+
+    letter-spacing: 6px;
+
+
+    text-transform: uppercase;
+
+
+    color:
+
+        rgba(255,255,255,0.65);
+
+
+
+    margin-bottom: 35px;
+
+
+
+    animation:
+
+        fadeUp 1.5s ease forwards;
+
+
+}
+
+
+
+/* ---------- 主标题 ---------- */
+
+
+h1 {
+
+
+    font-size:
+
+        clamp(42px,8vw,72px);
+
+
+
+    font-weight: 300;
+
+
+
+    letter-spacing: 5px;
+
+
+
+    line-height: 1.2;
+
+
+
+    background:
+
+        linear-gradient(
+            120deg,
+            #ffffff,
+            #ffd6e8,
+            #ffffff
+        );
+
+
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+
+
+
+    text-shadow:
+
+        0 0 30px
+        rgba(255,180,220,0.35);
+
+
+
+    margin-bottom: 35px;
+
+
+
+    animation:
+
+        titleShow 2s ease forwards;
+
+
+}
+
+
+
+/* ---------- 生日文字 ---------- */
+
+
+.subtitle {
+
+
+    font-size:
+
+        clamp(16px,3vw,20px);
+
+
+
+    line-height: 2;
+
+
+
+    font-weight: 300;
+
+
+
+    letter-spacing: 3px;
+
+
+
+    color:
+
+        rgba(255,255,255,0.85);
+
+
+
+    margin-bottom: 55px;
+
+
+
+    animation:
+
+        fadeUp 2.5s ease forwards;
+
+
+}
+
+
+
+/* ---------- 按钮 ---------- */
+
+
+#enterBtn {
+
+
+    position: relative;
+
+
+    padding:
+
+        16px 45px;
+
+
+
+    border-radius: 50px;
+
+
+    border: 1px solid
+
+        rgba(255,255,255,0.45);
+
+
+
+    background:
+
+        rgba(255,255,255,0.08);
+
+
+
+    backdrop-filter:
+
+        blur(15px);
+
+
+
+    color:white;
+
+
+
+    font-size:16px;
+
+
+
+    letter-spacing:2px;
+
+
+
+    cursor:pointer;
+
+
+
+    overflow:hidden;
+
+
+
+    transition:
+
+        all .4s ease;
+
+
+
+    animation:
+
+        fadeUp 3s ease forwards;
+
+
+}
+
+
+
+/* 按钮光晕 */
+
+
+#enterBtn::before {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
     top:0;
+
+    left:-120%;
+
+
     width:100%;
+
     height:100%;
-    z-index:-3;
-}
 
-/* 漂浮渐变 */
 
-body::before{
-    content:"";
-    position:absolute;
-    width:600px;
-    height:600px;
-    border-radius:50%;
-    background:rgba(255,255,255,.25);
-    filter:blur(120px);
+    background:
 
-    left:-150px;
-    top:-150px;
+        linear-gradient(
 
-    animation=float1 10s ease-in-out infinite;
-}
+            120deg,
 
-body::after{
+            transparent,
 
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    border-radius:50%;
+            rgba(255,255,255,.45),
 
-    background:rgba(255,255,255,.18);
+            transparent
 
-    right:-120px;
-    bottom:-120px;
+        );
 
-    filter:blur(120px);
 
-    animation=float2 12s ease-in-out infinite;
-}
+    transition:.6s;
 
-@keyframes float1{
-
-0%{
-transform:translateY(0px);
-}
-
-50%{
-transform:translateY(40px);
-}
-
-100%{
-transform:translateY(0px);
-}
 
 }
 
-@keyframes float2{
 
-0%{
-transform:translateY(0px);
-}
 
-50%{
-transform:translateY(-35px);
-}
+#enterBtn:hover::before {
 
-100%{
-transform:translateY(0px);
-}
+
+    left:120%;
+
 
 }
 
-/* 卡片 */
 
-.container{
 
-width:90%;
-max-width:720px;
+#enterBtn:hover {
 
-padding:60px 50px;
 
-border-radius:35px;
+    transform:
 
-background:rgba(255,255,255,.22);
+        translateY(-5px);
 
-backdrop-filter:blur(20px);
 
--webkit-backdrop-filter:blur(20px);
 
-border:1px solid rgba(255,255,255,.45);
+    box-shadow:
 
-box-shadow:
 
-0 25px 60px rgba(255,105,180,.22);
+        0 0 35px
 
-text-align:center;
+        rgba(255,180,220,.6);
 
-animation:fadeUp 1.3s;
-}
 
-@keyframes fadeUp{
 
-from{
+    border-color:white;
 
-opacity:0;
-
-transform:translateY(50px);
 
 }
 
-to{
 
-opacity:1;
 
-transform:translateY(0);
+/* ---------- 提示文字 ---------- */
 
-}
 
-}
+.hint {
 
-h1{
 
-font-family:'Ma Shan Zheng',cursive;
+    margin-top:25px;
 
-font-size:62px;
 
-color:white;
 
-text-shadow:
+    font-size:13px;
 
-0 5px 18px rgba(255,105,180,.45);
 
-margin-bottom:20px;
 
-animation:heartbeat 2.4s infinite;
+    color:
 
-}
+        rgba(255,255,255,.45);
 
-@keyframes heartbeat{
 
-0%{
 
-transform:scale(1);
+    letter-spacing:2px;
+
+
+
+    animation:
+
+        fadeUp 3.5s ease forwards;
+
 
 }
 
-25%{
 
-transform:scale(1.05);
 
-}
+/* ---------- 流星容器 ---------- */
 
-50%{
 
-transform:scale(1);
+#meteorContainer {
 
-}
 
-75%{
+    position:fixed;
 
-transform:scale(1.05);
 
-}
+    inset:0;
 
-100%{
 
-transform:scale(1);
+    overflow:hidden;
 
-}
 
-}
+    z-index:3;
 
-.subtitle{
 
-font-size:22px;
+    pointer-events:none;
 
-color:#fff;
-
-line-height:1.8;
-
-margin-top:10px;
-
-margin-bottom:45px;
-
-font-weight:300;
 
 }
 
-/* 爱心 */
 
-.heart{
 
-font-size:70px;
+/* ---------- 动画 ---------- */
 
-margin:20px 0;
 
-animation:heartJump 1.5s infinite;
+@keyframes pageShow {
 
-}
 
-@keyframes heartJump{
+    from {
 
-0%{
 
-transform:translateY(0);
+        opacity:0;
 
-}
 
-50%{
+        transform:
 
-transform:translateY(-12px);
+            scale(.95);
 
-}
 
-100%{
+    }
 
-transform:translateY(0);
 
-}
+    to {
 
-}
 
-/* 按钮 */
+        opacity:1;
 
-.enter-btn{
 
-display:inline-block;
+        transform:
 
-padding:18px 55px;
+            scale(1);
 
-font-size:20px;
 
-font-weight:600;
-
-border-radius:60px;
-
-text-decoration:none;
-
-color:white;
-
-background:linear-gradient(135deg,#ff6fb5,#ff9bd0);
-
-box-shadow:
-
-0 12px 30px rgba(255,105,180,.35);
-
-transition:.35s;
-
-position:relative;
-
-overflow:hidden;
+    }
 
 }
 
-.enter-btn::before{
 
-content:"";
 
-position:absolute;
+@keyframes titleShow {
 
-left:-120%;
 
-top:0;
+    from {
 
-width:120%;
 
-height:100%;
+        opacity:0;
 
-background:
 
-linear-gradient(
+        transform:
 
-90deg,
+            translateY(40px);
 
-transparent,
 
-rgba(255,255,255,.45),
+        filter:
 
-transparent
+            blur(10px);
 
-);
 
-transition:.6s;
+    }
 
-}
 
-.enter-btn:hover::before{
+    to {
 
-left:120%;
 
-}
+        opacity:1;
 
-.enter-btn:hover{
 
-transform:translateY(-6px) scale(1.04);
+        transform:
 
-box-shadow:
+            translateY(0);
 
-0 20px 40px rgba(255,105,180,.42);
+
+        filter:
+
+            blur(0);
+
+
+    }
 
 }
 
-/* 飘花 */
 
-.petals{
 
-position:absolute;
+@keyframes fadeUp {
 
-left:0;
 
-top:0;
+    from {
 
-width:100%;
 
-height:100%;
+        opacity:0;
 
-pointer-events:none;
 
-overflow:hidden;
+        transform:
 
-}
+            translateY(30px);
 
-.petal{
 
-position:absolute;
+    }
 
-width:18px;
 
-height:18px;
+    to {
 
-background:pink;
 
-border-radius:50% 0 50% 50%;
+        opacity:1;
 
-opacity:.75;
 
-animation:fall linear infinite;
+        transform:
+
+            translateY(0);
+
+
+    }
+
 
 }
 
-@keyframes fall{
 
-0%{
 
-transform:
+/* ---------- 手机适配 ---------- */
 
-translateY(-100px)
 
-rotate(0deg);
+@media(max-width:600px){
 
-opacity:0;
 
-}
+    .mini-title {
 
-10%{
 
-opacity:1;
+        letter-spacing:4px;
 
-}
 
-100%{
+        margin-bottom:25px;
 
-transform:
 
-translateY(120vh)
+    }
 
-translateX(120px)
 
-rotate(720deg);
 
-opacity:0;
+    h1 {
 
-}
 
-}
+        letter-spacing:3px;
 
-/* 底部 */
 
-.footer{
+    }
 
-position:absolute;
 
-bottom:28px;
 
-width:100%;
+    .subtitle {
 
-text-align:center;
 
-font-size:14px;
+        letter-spacing:2px;
 
-color:white;
 
-letter-spacing:2px;
+        margin-bottom:40px;
 
-opacity:.85;
 
-}
+    }
 
-/* 星星 */
 
-.star{
 
-position:absolute;
+    #enterBtn {
 
-background:white;
 
-border-radius:50%;
+        padding:
 
-animation:twinkle 2s infinite;
+            14px 35px;
 
-}
 
-@keyframes twinkle{
+        font-size:14px;
 
-0%{
 
-opacity:.2;
+    }
 
-transform:scale(.8);
-
-}
-
-50%{
-
-opacity:1;
-
-transform:scale(1.4);
-
-}
-
-100%{
-
-opacity:.2;
-
-transform:scale(.8);
-
-}
-
-}
-
-/* 响应式 */
-
-@media(max-width:768px){
-
-.container{
-
-padding:40px 28px;
-
-}
-
-h1{
-
-font-size:46px;
-
-}
-
-.subtitle{
-
-font-size:18px;
-
-}
-
-.enter-btn{
-
-font-size:18px;
-
-padding:16px 42px;
-
-}
-
-.heart{
-
-font-size:58px;
-
-}
-
-}
-
-@media(max-width:480px){
-
-.container{
-
-width:92%;
-
-padding:35px 22px;
-
-}
-
-h1{
-
-font-size:38px;
-
-}
-
-.subtitle{
-
-font-size:16px;
-
-line-height:1.7;
-
-}
-
-.enter-btn{
-
-font-size:17px;
-
-padding:15px 35px;
-
-}
-
-.footer{
-
-font-size:12px;
-
-}
 
 }
