@@ -1,113 +1,205 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-    <title>Happy Birthday ❤️</title>
+    <meta
+        name="theme-color"
+        content="#030205"
+    >
 
+    <title>For You</title>
 
-    <!-- 首页样式 -->
-    <link rel="stylesheet" href="css/style.css">
-
-
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 
 <body>
 
+<main class="scene" id="scene">
 
-    <!-- 星空背景 -->
-    <canvas id="starCanvas"></canvas>
+    <!-- =========================
+         夜空
+    ========================== -->
 
+    <div class="sky"></div>
 
-
-    <!-- 页面遮罩 -->
-    <div class="page-overlay"></div>
-
-
-
-    <!-- 首页内容 -->
-
-    <main class="hero">
-
-
-        <section class="hero-content">
-
-
-            <p class="mini-title">
-                A Letter For You
-            </p>
-
-
-
-            <h1>
-                Happy Birthday
-            </h1>
+    <div class="stars" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
 
+    <!-- =========================
+         流星
+    ========================== -->
 
-            <p class="subtitle">
-
-                今晚，<br>
-
-                所有闪烁的星光，<br>
-
-                都在祝你生日快乐。
-
-            </p>
+    <div class="meteor" aria-hidden="true">
+        <div class="meteor-tail"></div>
+        <div class="meteor-head"></div>
+    </div>
 
 
+    <!-- =========================
+         中央环境光
+    ========================== -->
 
-            <button id="enterBtn">
-
-                开启今晚的惊喜 ✨
-
-            </button>
-
+    <div class="ambient-glow"></div>
 
 
-            <p class="hint">
+    <!-- =========================
+         蛋糕场景
+    ========================== -->
 
-                轻轻点击，故事开始了。
+    <section class="cake-scene" aria-label="Birthday cake">
 
-            </p>
+        <div class="cake-shadow"></div>
 
-
-        </section>
-
-
-    </main>
-
+        <!-- 蜡烛产生的环境光 -->
+        <div class="candle-light"></div>
 
 
+        <!-- =====================
+             蛋糕
+        ====================== -->
 
-    <!-- 流星动画容器 -->
+        <div class="cake">
 
-    <div id="meteorContainer"></div>
+            <!-- 蜡烛 -->
+            <div class="candles">
+
+                <div class="candle candle-1">
+                    <span class="wick"></span>
+                    <span class="flame"></span>
+                </div>
+
+                <div class="candle candle-2">
+                    <span class="wick"></span>
+                    <span class="flame"></span>
+                </div>
+
+                <div class="candle candle-3">
+                    <span class="wick"></span>
+                    <span class="flame"></span>
+                </div>
+
+                <div class="candle candle-4">
+                    <span class="wick"></span>
+                    <span class="flame"></span>
+                </div>
+
+                <div class="candle candle-5">
+                    <span class="wick"></span>
+                    <span class="flame"></span>
+                </div>
+
+            </div>
 
 
+            <!-- 顶层奶油 -->
 
-    <!-- 背景音乐 -->
+            <div class="cake-top">
 
-    <audio id="bgm" loop preload="auto">
+                <div class="cream cream-1"></div>
+                <div class="cream cream-2"></div>
+                <div class="cream cream-3"></div>
+                <div class="cream cream-4"></div>
 
-        <source src="assets/music/happy-birthday.mp3"
-                type="audio/mpeg">
+                <div class="top-strawberry strawberry-1"></div>
+                <div class="top-strawberry strawberry-2"></div>
+                <div class="top-strawberry strawberry-3"></div>
 
-    </audio>
+            </div>
 
 
+            <!-- 草莓奶油夹层 -->
 
-    <!-- 首页逻辑 -->
+            <div class="cream-layer">
 
-    <script src="js/main.js"></script>
+                <div class="layer-strawberry s1"></div>
+                <div class="layer-strawberry s2"></div>
+                <div class="layer-strawberry s3"></div>
+                <div class="layer-strawberry s4"></div>
+                <div class="layer-strawberry s5"></div>
 
+            </div>
+
+
+            <!-- 蛋糕胚 -->
+
+            <div class="sponge sponge-top"></div>
+
+            <div class="sponge sponge-bottom"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         漂浮光粒
+    ========================== -->
+
+    <div class="particles" aria-hidden="true">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =========================
+         花瓣
+    ========================== -->
+
+    <div class="petals" aria-hidden="true">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- =========================
+         开场按钮
+    ========================== -->
+
+    <button
+        id="startButton"
+        class="start-button"
+        type="button"
+        aria-label="开始生日祝福"
+    >
+        TAP TO BEGIN
+    </button>
+
+</main>
+
+
+<script src="./script.js"></script>
 
 </body>
-
-
 </html>
+```
